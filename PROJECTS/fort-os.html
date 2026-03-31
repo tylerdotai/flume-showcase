@@ -6,25 +6,19 @@
   <title>FortOS — Managed OpenClaw Agent Hosting</title>
   <style>
     :root {
-      --bg-primary: #0a0a0f;
-      --bg-secondary: #12121a;
-      --bg-card: #1a1a24;
-      --accent: #22c55e;
+      --bg-primary: #0f0a0a;
+      --bg-secondary: #181111;
+      --bg-card: #1f1818;
+      --accent: #ff6b00;
+      --accent-glow: rgba(255, 107, 0, 0.3);
       --accent-alt: #fbbf24;
       --text-primary: #f0f0f5;
-      --text-secondary: #a0a0b0;
-      --text-muted: #606070;
-      --border: #2a2a3a;
+      --text-secondary: #a09090;
+      --text-muted: #505060;
+      --border: #352a2a;
       --font-display: 'Inter', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --font-mono: 'JetBrains Mono', monospace;
     }
-    .icon {
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      vertical-align: middle;
-    }
-    .icon-sm { width: 0.8em; height: 0.8em; }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: var(--bg-primary);
@@ -33,16 +27,51 @@
       line-height: 1.6;
       min-height: 100vh;
     }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(15, 10, 10, 0.95);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--accent); }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
     .hero {
       position: relative;
-      height: 420px;
+      height: 60vh;
+      min-height: 400px;
       overflow: hidden;
     }
     .hero img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.5;
+      opacity: 0.7;
     }
     .hero-overlay {
       position: absolute;
@@ -50,12 +79,11 @@
       background: linear-gradient(to bottom, transparent 0%, var(--bg-primary) 100%);
       display: flex;
       align-items: flex-end;
-      padding: 48px;
+      padding: 64px;
     }
     .hero-content h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
+      font-size: 3.5rem;
+      font-weight: 900;
       margin-bottom: 12px;
     }
     .hero-content h1 span { color: var(--accent); }
@@ -68,61 +96,45 @@
       display: inline-block;
       background: var(--accent);
       color: #000;
-      padding: 4px 12px;
-      border-radius: 4px;
+      padding: 6px 14px;
+      border-radius: 6px;
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 48px 24px;
+      padding: 64px 24px;
     }
     .back-link {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       color: var(--text-muted);
       text-decoration: none;
       font-size: 0.9rem;
-      margin-bottom: 24px;
+      margin-bottom: 32px;
       transition: color 0.2s;
     }
     .back-link:hover { color: var(--accent); }
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 40px 0 20px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
-    }
-    .highlight {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 700px;
-      margin-bottom: 24px;
-    }
-    .highlight strong { color: var(--text-primary); }
     .stats-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 16px;
-      margin: 24px 0 40px;
+      margin: 32px 0 48px;
     }
     .stat-box {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
+      border-radius: 12px;
+      padding: 24px;
       text-align: center;
     }
     .stat-box .value {
-      font-size: 2rem;
-      font-weight: 800;
+      font-size: 2.5rem;
+      font-weight: 900;
       color: var(--accent);
       font-family: var(--font-mono);
     }
@@ -132,30 +144,21 @@
       text-transform: uppercase;
       margin-top: 4px;
     }
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 16px;
-      margin: 24px 0;
-    }
-    .team-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 20px;
-      text-align: center;
-    }
-    .team-card .role {
-      color: var(--accent);
-      font-size: 0.8rem;
-      text-transform: uppercase;
+    .section-title {
+      font-size: 1.75rem;
       font-weight: 700;
-      margin-bottom: 4px;
+      margin: 48px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
     }
-    .team-card .name {
+    .highlight {
       font-size: 1.1rem;
-      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+      max-width: 700px;
     }
+    .highlight strong { color: var(--text-primary); }
     .feature-list {
       list-style: none;
       margin-bottom: 32px;
@@ -168,26 +171,37 @@
       gap: 12px;
     }
     .feature-list li::before {
-      content: "check";
-      color: var(--accent);
-      font-size: 1rem;
+      content: "";
+      width: 20px;
+      height: 20px;
+      background: var(--accent);
+      border-radius: 4px;
       flex-shrink: 0;
       margin-top: 2px;
     }
-    .tech-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 32px;
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
     }
-    .tech-tag {
-      background: var(--bg-secondary);
+    .team-card {
+      background: var(--bg-card);
       border: 1px solid var(--border);
-      padding: 6px 14px;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      font-family: var(--font-mono);
-      color: var(--text-secondary);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+    .team-card .role {
+      color: var(--accent);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .team-card .name {
+      font-size: 1.1rem;
+      font-weight: 600;
     }
     .comparison-grid {
       display: grid;
@@ -201,7 +215,7 @@
     .comparison-card {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 8px;
+      border-radius: 12px;
       padding: 24px;
     }
     .comparison-card.old {
@@ -221,29 +235,42 @@
       font-size: 0.9rem;
       color: var(--text-secondary);
     }
-    .comparison-card li {
-      padding: 6px 0;
+    .comparison-card li { padding: 6px 0; }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .tech-tag {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      font-family: var(--font-mono);
+      color: var(--text-secondary);
     }
     .links {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-top: 40px;
+      margin-top: 48px;
     }
     .link-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       background: var(--accent);
       color: #000;
-      padding: 10px 20px;
+      padding: 12px 24px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
       font-size: 0.9rem;
-      transition: opacity 0.2s;
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .link-btn:hover { opacity: 0.85; }
+    .link-btn:hover { opacity: 0.85; transform: translateY(-2px); }
     .link-btn.secondary {
       background: transparent;
       border: 1px solid var(--accent);
@@ -251,29 +278,55 @@
     }
     footer {
       text-align: center;
-      padding: 32px 24px;
+      padding: 48px 24px;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.875rem;
       border-top: 1px solid var(--border);
-      margin-top: 48px;
+      margin-top: 64px;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    .icon {
+      width: 1em;
+      height: 1em;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .icon-stroke {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
   </style>
 </head>
 <body>
 
+<nav>
+  <a href="../index.html" class="nav-logo">Flume<span>SaaS</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../AGENT-SETUP/index.html">Architecture</a></li>
+    <li><a href="https://fort-os.com" target="_blank">Live Site</a></li>
+  </ul>
+</nav>
+
 <div class="hero">
-  <img src="../assets/images/fort-os-landing.png" alt="FortOS — Managed OpenClaw Agent Hosting">
+  <img src="../assets/images/fort-os-landing.png" alt="FortOS">
   <div class="hero-overlay">
     <div class="hero-content">
       <span class="badge">Active</span>
       <h1>Fort<span>OS</span></h1>
-      <p>Two guys hosting and managing OpenClaw agents for businesses that want AI power without the technical overhead.</p>
+      <p>Two guys hosting and managing OpenClaw agents for businesses.</p>
     </div>
   </div>
 </div>
 
 <div class="container">
-  <a href="../index.html" class="back-link">← Back to Showcase</a>
+  <a href="../index.html" class="back-link">
+    <svg class="icon icon-stroke" viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+    Back to Showcase
+  </a>
 
   <div class="stats-grid">
     <div class="stat-box">
@@ -290,7 +343,7 @@
     </div>
     <div class="stat-box">
       <div class="value">24/7</div>
-      <div class="label">Agent Uptime</div>
+      <div class="label">Uptime</div>
     </div>
   </div>
 
@@ -300,10 +353,7 @@
       <strong>"Your AI agent. Working while you sleep."</strong>
     </p>
     <p class="highlight">
-      FortOS is <strong>Tyler and Tobalo</strong> — two guys who provide managed OpenClaw agent hosting. An "AI employee" that handles scheduling, quotes, customer questions, and payments — 24/7.
-    </p>
-    <p class="highlight">
-      You get the power of AI agents running your business tasks, without needing to set up or manage the infrastructure yourself. We <strong>host</strong> and <strong>manage</strong> — you focus on your business.
+      FortOS is <strong>Tyler and Tobalo</strong> — two guys who provide managed OpenClaw agent hosting. We host and manage — you focus on your business.
     </p>
   </section>
 
@@ -322,56 +372,20 @@
   </section>
 
   <section>
-    <h2 class="section-title">What You Get</h2>
-    <ul class="feature-list">
-      <li>
-        <div>
-          <strong>Agent Hosting</strong><br>
-          We run your OpenClaw agents on our infrastructure — always on, monitored, backed up
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Agent Management</strong><br>
-          We configure, tune, and maintain your agents. You focus on your business, we handle the AI
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>Custom Agent Builds</strong><br>
-          Need something specific? We build and deploy agents tailored to your workflow
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>24/7 Uptime</strong><br>
-          Your agents stay running. We handle updates, restarts, and monitoring
-        </div>
-      </li>
-      <li>
-        <div>
-          <strong>OpenClaw Native</strong><br>
-          Built on OpenClaw — the same platform powering Tyler's own Flume operations
-        </div>
-      </li>
-    </ul>
-  </section>
-
-  <section>
     <h2 class="section-title">The Difference</h2>
     <div class="comparison-grid">
       <div class="comparison-card old">
-        <h4><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Doing it yourself</h4>
+        <h4>Doing it yourself</h4>
         <ul>
           <li>Set up OpenClaw yourself</li>
-          <li>Learn the platform, configs, agents</li>
-          <li>Manage hosting, backups, uptime</li>
+          <li>Learn the platform, configs</li>
+          <li>Manage hosting, backups</li>
           <li>Debug issues when things break</li>
-          <li>Constant maintenance overhead</li>
+          <li>Constant maintenance</li>
         </ul>
       </div>
       <div class="comparison-card new">
-        <h4><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> FortOS Managed</h4>
+        <h4>FortOS Managed</h4>
         <ul>
           <li>We handle all the setup</li>
           <li>Agents configured to your needs</li>
@@ -391,18 +405,20 @@
       <span class="tech-tag">Raspberry Pi</span>
       <span class="tech-tag">Vercel</span>
       <span class="tech-tag">Cloudflare</span>
-      <span class="tech-tag">Discord</span>
     </div>
   </section>
 
   <div class="links">
-    <a href="https://fort-os.com" class="link-btn">Live Site <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
-    <a href="https://github.com/jedi-ops/fortOS" class="link-btn secondary">GitHub <svg class="icon icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg></a>
+    <a href="https://fort-os.com" class="link-btn">
+      <svg class="icon icon-stroke" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Live Site
+    </a>
+    <a href="https://github.com/jedi-ops/fortOS" class="link-btn secondary">GitHub</a>
   </div>
 </div>
 
 <footer>
-  <p>FortOS — <a href="https://tylerdotai.com" style="color: var(--accent);">tylerdotai.com</a></p>
+  <p>FortOS — <a href="https://fort-os.com">fort-os.com</a></p>
 </footer>
 
 </body>
