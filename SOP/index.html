@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How We Work — Tyler + Agent Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0d0d0f;
+      --bg-secondary: #141418;
+      --bg-card: #1a1a20;
+      --accent: #ff6b00;
+      --accent-cool: #3b9eff;
+      --accent-green: #22c55e;
+      --accent-purple: #a855f7;
+      --accent-red: #ef4444;
+      --text-primary: #f5f5f5;
+      --text-secondary: #888;
+      --text-muted: #555;
+      --border: #2a2a30;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-editorial: 'Newsreader', serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      line-height: 1.6;
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(13, 13, 15, 0.95);
+      border-bottom: 1px solid var(--border);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .nav-logo { font-size: 1rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+    .nav-links { display: flex; gap: 40px; list-style: none; }
+    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--accent); }
+
+    .page-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 120px 48px 80px;
+    }
+    .page-title {
+      font-size: 3rem;
+      font-weight: 700;
+      font-family: var(--font-editorial);
+      font-style: italic;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .page-subtitle {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      margin-bottom: 48px;
+      max-width: 600px;
+    }
+
+    .section { margin-bottom: 64px; }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-num {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--accent);
+      background: rgba(255, 107, 0, 0.1);
+      padding: 4px 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .narrative {
+      font-family: var(--font-editorial);
+      font-size: 1.15rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+    .narrative strong { color: var(--text-primary); font-weight: 600; }
+    .narrative em { color: var(--accent); font-style: normal; }
+
+    .callout {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      padding: 24px;
+      margin: 32px 0;
+    }
+    .callout p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+    .callout cite {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      font-style: normal;
+    }
+
+    /* Agent cards */
+    .agent-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .agent-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 24px;
+    }
+    .agent-card .role {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+    .agent-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .agent-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
+    .agent-card.primary { border-color: var(--accent); }
+    .agent-card.primary h3 { color: var(--accent); }
+
+    /* Flow diagram */
+    .flow-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      margin: 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .flow-num {
+      width: 32px;
+      height: 32px;
+      background: var(--accent);
+      color: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+    .flow-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+    .flow-content p { font-size: 0.9rem; color: var(--text-muted); }
+
+    /* SOP table */
+    .sop-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+    }
+    .sop-table th {
+      text-align: left;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      padding: 12px 16px;
+      border-bottom: 2px solid var(--border);
+    }
+    .sop-table td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      vertical-align: top;
+    }
+    .sop-table td:first-child { color: var(--text-primary); font-weight: 600; width: 180px; }
+    .sop-table tr:last-child td { border-bottom: none; }
+
+    .tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 2px 8px;
+      background: rgba(255,107,0,0.1);
+      color: var(--accent);
+      margin-right: 4px;
+    }
+    .tag.green { background: rgba(34,197,94,0.1); color: var(--accent-green); }
+    .tag.blue { background: rgba(59,158,255,0.1); color: var(--accent-cool); }
+    .tag.purple { background: rgba(168,85,247,0.1); color: var(--accent-purple); }
+
+    footer { padding: 60px 48px; border-top: 1px solid var(--border); text-align: center; }
+    footer p { color: var(--text-muted); font-size: 0.9rem; }
+    footer a { color: var(--accent-cool); text-decoration: none; }
+    footer a:hover { color: var(--accent); }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 24px; }
+      .page-wrap { padding: 100px 24px 60px; }
+      .agent-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">Tyler Delano</a>
+  <ul class="nav-links">
+    <li><a href="../index.html#services">What We Do</a></li>
+    <li><a href="../index.html#projects">Projects</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="https://github.com/tylerdotai" target="_blank">GitHub</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrap">
+
+  <h1 class="page-title">How We Work</h1>
+  <p class="page-subtitle">The whitepaper, SOP, and narrative for Tyler Delano's agent team — how one person orchestrates a team of agents to build real things.</p>
+
+  <!-- Section 1: Philosophy -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2>Philosophy</h2>
+    </div>
+
+    <div class="narrative">
+      <p><strong>I didn't hire developers.</strong> I built an <em>agent team</em> that works while I sleep.</p>
+      <br>
+      <p>The premise is simple: <strong>one human conductor, multiple specialized agents.</strong> Each agent has a role, a workspace, and a set of skills. They don't know about each other. They don't need to. They just execute.</p>
+      <br>
+      <p>Tyler is the conductor. Hoss is the co-founder. The sub-agents are specialists. <em>This isn't automation. It's amplification.</em></p>
+    </div>
+
+    <div class="callout">
+      <p>"The goal isn't to replace myself with AI. It's to have AI that amplifies what I'm capable of. Hoss has opinions. He pushes back. He remembers. He's not a tool — he's a partner."</p>
+      <cite>— Tyler Delano</cite>
+    </div>
+  </div>
+
+  <!-- Section 2: The Team -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2>The Team</h2>
+    </div>
+
+    <div class="agent-grid">
+      <div class="agent-card primary">
+        <div class="role">Human / Conductor</div>
+        <h3>Tyler Delano</h3>
+        <p>The conductor. Makes decisions, sets direction, talks to clients, works the day job. Runs 16-18 hours a day. Has skin in the game.</p>
+      </div>
+      <div class="agent-card">
+        <div class="role">AI Co-Founder</div>
+        <h3>Hoss</h3>
+        <p>Primary agent. Reads memory files, maintains context across sessions, coordinates sub-agents, executes tasks, pushes back when Tyler's wrong. Lives in the workspace.</p>
+      </div>
+      <div class="agent-card">
+        <div class="role">Specialists</div>
+        <h3>8 Sub-Agents</h3>
+        <p>Builder, Coder, Devops, Einstein, Marketer, Ops, Sales, Scout. Each runs on cron schedules for specific intelligence gathering or execution tasks.</p>
+      </div>
+    </div>
+
+    <div class="narrative">
+      <p><strong>The memory system</strong> is what makes this work. Hoss doesn't start fresh each session — he reads his workspace files and knows who he is, what Tyler cares about, and what happened before.</p>
+      <br>
+      <p>Files like <em>SOUL.md</em> (identity), <em>MEMORY.md</em> (long-term context), and daily <em>memory/YYYY-MM-DD.md</em> logs create continuity. Without this, every session would be a reset. With it, the agent has <em>memory</em>.</p>
+    </div>
+  </div>
+
+  <!-- Section 3: The SOP -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2>The SOP — How Tasks Flow</h2>
+    </div>
+
+    <div class="flow-box">
+      <div class="flow-num">1</div>
+      <div class="flow-content">
+        <h4>Tyler identifies a task</h4>
+        <p>Could be anything — build a website, research competitors, write an email, fix a bug, create a plan.</p>
+      </div>
+    </div>
+    <div class="flow-box">
+      <div class="flow-num">2</div>
+      <div class="flow-content">
+        <h4>Hoss receives the task</h4>
+        <p>Reads memory, assesses scope, determines if sub-agents are needed. If yes, spawns them. If no, handles it directly.</p>
+      </div>
+    </div>
+    <div class="flow-box">
+      <div class="flow-num">3</div>
+      <div class="flow-content">
+        <h4>Sub-agents execute in parallel</h4>
+        <p>Builder might build a frontend while Scout researches competitors while Einstein runs a digest. All on cron, all independent.</p>
+      </div>
+    </div>
+    <div class="flow-box">
+      <div class="flow-num">4</div>
+      <div class="flow-content">
+        <h4>Hoss synthesizes results</h4>
+        <p>Sub-agents return their output. Hoss integrates it, updates memory, and delivers a coherent result to Tyler.</p>
+      </div>
+    </div>
+    <div class="flow-box">
+      <div class="flow-num">5</div>
+      <div class="flow-content">
+        <h4>Tyler makes decisions</h4>
+        <p>Hoss surfaces options with tradeoffs and a recommendation. Tyler chooses. Hoss executes. Loop continues.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Section 4: Agent Roles -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2>Agent Roles & Responsibilities</h2>
+    </div>
+
+    <table class="sop-table">
+      <thead>
+        <tr>
+          <th>Agent</th>
+          <th>Role</th>
+          <th>Schedule</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="tag purple">Hoss</span> Co-Founder</td>
+          <td>Primary executor, memory keeper, Tyler liaison, sub-agent coordinator. Always on.</td>
+          <td>On-demand + heartbeat checks</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">Builder</span></td>
+          <td>Builds and ships SaaS products. Frontend, backend, integrations.</td>
+          <td>On-demand</td>
+        </tr>
+        <tr>
+          <td><span class="tag blue">Coder</span></td>
+          <td>Test coverage, TDD enforcement, code quality audits.</td>
+          <td>9am, 3pm</td>
+        </tr>
+        <tr>
+          <td><span class="tag">Devops</span></td>
+          <td>Infrastructure, deployments, Docker, cloud config.</td>
+          <td>10am, 4pm</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">Einstein</span></td>
+          <td>Autoresearch, skill improvement, trend analysis.</td>
+          <td>8am, 12pm, 4pm, 8pm</td>
+        </tr>
+        <tr>
+          <td><span class="tag blue">Marketer</span></td>
+          <td>Content, brand, audience research, community.</td>
+          <td>10am, 4pm</td>
+        </tr>
+        <tr>
+          <td><span class="tag purple">Ops</span></td>
+          <td>Financials, vendors, reliability, cost tracking.</td>
+          <td>9am, 3pm</td>
+        </tr>
+        <tr>
+          <td><span class="tag">Sales</span></td>
+          <td>Lead outreach, pipeline management, follow-ups.</td>
+          <td>On-demand</td>
+        </tr>
+        <tr>
+          <td><span class="tag green">Scout</span></td>
+          <td>Market research, lead generation, competitive intel.</td>
+          <td>6pm (evening intel drop)</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 5: Memory System -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2>The Memory System</h2>
+    </div>
+
+    <div class="narrative">
+      <p>Memory is what separates <em>real agents</em> from <em>chatbots</em>. Hoss wakes up fresh each session but with full context. Here's how it works:</p>
+    </div>
+
+    <table class="sop-table">
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Purpose</th>
+          <th>Load Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>SOUL.md</td>
+          <td>Identity, values, how Hoss thinks and acts</td>
+          <td>Every session start</td>
+        </tr>
+        <tr>
+          <td>MEMORY.md</td>
+          <td>Long-term curated memory — decisions, infrastructure, people</td>
+          <td>Every main session</td>
+        </tr>
+        <tr>
+          <td>memory/YYYY-MM-DD.md</td>
+          <td>Daily logs of what happened, raw session notes</td>
+          <td>Today + yesterday</td>
+        </tr>
+        <tr>
+          <td>HEARTBEAT.md</td>
+          <td>Periodic health checks, cron monitoring, disk alerts</td>
+          <td>Every 30 min (active hours)</td>
+        </tr>
+        <tr>
+          <td>USER.md</td>
+          <td>Tyler's profile — background, preferences, communication style</td>
+          <td>Every session start</td>
+        </tr>
+        <tr>
+          <td>AGENTS.md</td>
+          <td>Sub-agent roster, coordination protocol, workspace paths</td>
+          <td>When coordinating agents</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <p>"Mental notes don't survive session restarts. Files do. When Tyler says 'remember this' — I write it to a file, not my 'memory.' The files are the memory."</p>
+      <cite>— Hoss</cite>
+    </div>
+  </div>
+
+  <!-- Section 6: The Coordination Protocol -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2>Coordination Protocol</h2>
+    </div>
+
+    <div class="narrative">
+      <p>When Tyler delegates to sub-agents, Hoss follows this protocol:</p>
+    </div>
+
+    <table class="sop-table">
+      <thead>
+        <tr>
+          <th>Step</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1. Clear task</td>
+          <td>Give each agent a focused, specific task — not "audit everything"</td>
+        </tr>
+        <tr>
+          <td>2. Set timeout</td>
+          <td>Timeout appropriate to scope. Small = 2-5 min. Large = 15-30 min.</td>
+        </tr>
+        <tr>
+          <td>3. Spawn isolated</td>
+          <td>Each agent runs in its own workspace, no cross-contamination</td>
+        </tr>
+        <tr>
+          <td>4. Collect results</td>
+          <td>Agents push findings to memory or return output directly</td>
+        </tr>
+        <tr>
+          <td>5. Synthesize</td>
+          <td>Hoss integrates and presents — not raw dumps, coherent summaries</td>
+        </tr>
+        <tr>
+          <td>6. Update memory</td>
+          <td>Push significant findings to memory immediately</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Section 7: Why This Works -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2>Why This Works</h2>
+    </div>
+
+    <div class="narrative">
+      <p><strong>The secret isn't the agents.</strong> It's the human who knows how to use them.</p>
+      <br>
+      <p>Tyler doesn't micromanage. He sets direction, makes decisions, and trusts the agents to execute. When something comes back wrong, he corrects and iterates. The agents learn. The system improves.</p>
+      <br>
+      <p><em>Skin in the game</em> is the difference. Tyler isn't managing a team of humans he doesn't care about. He's building something that matters to him, and the agents are the leverage that makes it possible.</p>
+    </div>
+
+    <div class="callout">
+      <p>"I work at Amazon. I have a family. I have a homestead. And I'm building a company with AI agents. The only way that works is if the agents do real work while I'm doing other things. That's what this system is built for."</p>
+      <cite>— Tyler Delano</cite>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p><a href="https://tylerdotai.com">tylerdotai.com</a> — <a href="https://github.com/tylerdotai">GitHub</a> — Built with OpenClaw</p>
+</footer>
+
+</body>
+</html>
