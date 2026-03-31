@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Guide — Interview Walkthrough</title>
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a24;
+      --accent: #ff6b00;
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --border: #2a2a3a;
+      --font-display: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    header {
+      margin-bottom: 48px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    h1 span { color: var(--accent); }
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+    }
+    h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 48px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    .step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 24px 0;
+      position: relative;
+    }
+    .step-number {
+      position: absolute;
+      top: -16px;
+      left: 24px;
+      background: var(--accent);
+      color: #000;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .step h3 {
+      font-size: 1.35rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+    .step p {
+      color: var(--text-secondary);
+      margin-bottom: 16px;
+    }
+    .command {
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      padding: 16px 20px;
+      border-radius: 0 8px 8px 0;
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      margin: 12px 0;
+    }
+    .demo-box {
+      background: var(--bg-primary);
+      border: 2px dashed var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 16px 0;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .tip {
+      background: rgba(255, 107, 0, 0.1);
+      border: 1px solid var(--accent);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 0.95rem;
+    }
+    .tip strong { color: var(--accent); }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Interview <span>Demo</span> Guide</h1>
+  <p class="subtitle">A practical walkthrough for Amit Sharma's YouTube interview — what to show, what to say, and how to demonstrate real agent capabilities.</p>
+</header>
+
+<div class="tip">
+  <strong>Before you start:</strong> Pull up the GitHub repo (github.com/tylerdotai/flume-showcase) or open this HTML file on screen. You'll reference it throughout.
+</div>
+
+<h2>Demo 1: The Workspace Anatomy</h2>
+<div class="step">
+  <span class="step-number">1</span>
+  <h3>Open the workspace directory</h3>
+  <p>Screen share your terminal, navigate to <code>~/.openclaw/workspace/</code></p>
+  <div class="command">cd ~/.openclaw/workspace && ls -la</div>
+</div>
+
+<div class="step">
+  <span class="step-number">2</span>
+  <h3>Show SOUL.md — the philosophical core</h3>
+  <p>Open SOUL.md in your editor. Walk through the core identity: "You are not a chatbot. You are Tyler's co-founder."</p>
+  <div class="command">cat ~/.openclaw/workspace/SOUL.md | head -50</div>
+</div>
+
+<div class="step">
+  <span class="step-number">3</span>
+  <h3>Show IDENTITY.md — role definition</h3>
+  <p>Explain co-founder responsibilities and how Hoss is different from a standard AI assistant.</p>
+</div>
+
+<h2>Demo 2: Memory That Persists</h2>
+<div class="step">
+  <span class="step-number">4</span>
+  <h3>Search memory for a past decision</h3>
+  <p>Ask Hoss (in another window): "What did we decide about the Flume focus last week?" Watch him find it in MEMORY.md</p>
+  <div class="command">memory-search "Flume focus decision"</div>
+  <p class="demo-box">Live search demo — Hoss finds the decision, reads it back, explains its context</p>
+</div>
+
+<div class="step">
+  <span class="step-number">5</span>
+  <h3>Show the daily memory logs</h3>
+  <p>Open <code>memory/2026-03-31.md</code> (today's log). Show how every significant action gets logged.</p>
+</div>
+
+<h2>Demo 3: The Sub-Agent System</h2>
+<div class="step">
+  <span class="step-number">6</span>
+  <h3>List running sub-agents</h3>
+  <div class="command">openclaw cron list</div>
+  <p>Show the scheduled agents: einstein, scout, coder, builder — each running on its own schedule</p>
+</div>
+
+<div class="step">
+  <span class="step-number">7</span>
+  <h3>Show an agent workspace</h3>
+  <p>Open <code>~/.openclaw/workspace/agents/einstein/</code> — show the agent's own SOUL.md, MEMORY.md, and task logs</p>
+</div>
+
+<h2>Demo 4: Live Task Execution</h2>
+<div class="step">
+  <span class="step-number">8</span>
+  <h3>Make a live request</h3>
+  <p>Ask Hoss to do something in real-time: "Give me a summary of all four projects." Watch the flow:</p>
+  <ul style="margin: 12px 0; padding-left: 24px; color: var(--text-secondary);">
+    <li>Assesses scope (30 seconds)</li>
+    <li>Pulls from memory + project files</li>
+    <li>Synthesizes a response</li>
+    <li>Offers to dive deeper</li>
+  </ul>
+  <p class="demo-box">The magic moment: viewer sees an AI actually work, not just answer</p>
+</div>
+
+<h2>Demo 5: Heartbeat System</h2>
+<div class="step">
+  <span class="step-number">9</span>
+  <h3>Show HEARTBEAT.md</h3>
+  <p>Open the heartbeat config — explain autonomous checks running on schedule, doing real work without being asked.</p>
+</div>
+
+<h2>Key Talking Points</h2>
+<div class="step">
+  <h3>"Most AI setups are stateless. Hoss isn't."</h3>
+  <p>Every session starts fresh but with full context. Decisions persist. Relationships persist. The agent gets better over time.</p>
+</div>
+
+<div class="step">
+  <h3>"Agents are force multipliers."</h3>
+  <p>One human + the right agents = leverage most teams can't match. Tyler is L3 IT by day, running a SaaS company by night — because of the agent infrastructure.</p>
+</div>
+
+<div class="step">
+  <h3>"We built this to escape the cloud."</h3>
+  <p>Local-first AI, self-hosted infrastructure, autonomous operations. The goal is building systems that don't depend on big tech.</p>
+</div>
+
+<div class="step">
+  <h3>"Watch — I'll ask Hoss to update this demo guide."</h3>
+  <p>Make a live change request. Hoss reads the file, updates it, commits it. The agent that improves its own infrastructure.</p>
+</div>
+
+<h2>After the Interview</h2>
+<p style="color: var(--text-secondary);">Send viewers to <strong>github.com/tylerdotai/flume-showcase</strong> — the repo has all the HTML reports, agent setup docs, and links to live projects.</p>
+
+</div>
+</body>
+</html>

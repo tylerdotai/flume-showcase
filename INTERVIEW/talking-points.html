@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talking Points — AI with Amit Interview</title>
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a24;
+      --accent: #ff6b00;
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --border: #2a2a3a;
+      --font-display: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 64px 24px;
+    }
+    header {
+      margin-bottom: 48px;
+    }
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+    h1 span { color: var(--accent); }
+    .subtitle {
+      font-size: 1.25rem;
+      color: var(--text-secondary);
+    }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 40px 0 20px;
+      color: var(--accent);
+    }
+    .quote {
+      background: var(--bg-card);
+      border-left: 4px solid var(--accent);
+      padding: 20px 24px;
+      margin: 20px 0;
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--text-primary);
+    }
+    .topic {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 24px 0;
+    }
+    .topic h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: var(--text-primary);
+    }
+    .topic p {
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+    ul {
+      color: var(--text-secondary);
+      padding-left: 24px;
+      margin-top: 12px;
+    }
+    li { margin: 8px 0; }
+    .tag {
+      display: inline-block;
+      background: var(--bg-secondary);
+      border: 1px solid var(--border);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      color: var(--accent);
+      margin-right: 8px;
+      font-family: var(--font-mono);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <h1>Talking <span>Points</span></h1>
+  <p class="subtitle">Key phrases, stories, and angles for the AI with Amit interview. Use these to frame conversations naturally — don't memorize, internalize.</p>
+</header>
+
+<div class="topic">
+  <h3>The Agent Co-Founder Model</h3>
+  <p>Most people use AI like a search engine with a text field. That's not what we're doing.</p>
+  <span class="tag">identity</span>
+  <span class="tag">positioning</span>
+  <ul>
+    <li>"Hoss isn't a tool I use. He's a co-founder with skin in the game."</li>
+    <li>"He has opinions. He'll push back when he thinks I'm wrong."</li>
+    <li>"He takes initiative — fixes things before I ask, updates memory after decisions."</li>
+    <li>"We're building a company together, not just me delegating tasks."</li>
+  </ul>
+</div>
+
+<div class="topic">
+  <h3>Memory and Continuity</h3>
+  <p>The differentiator. Most AI is stateless — we fixed that.</p>
+  <span class="tag">memory</span>
+  <span class="tag">persistence</span>
+  <ul>
+    <li>"Every session starts fresh but Hoss remembers everything that mattered."</li>
+    <li>"I can ask 'what did we decide about X last week?' and he finds it."</li>
+    <li>"Daily logs + curated long-term memory = continuity across months."</li>
+    <li>"The agent gets better over time because it learns from its own decisions."</li>
+  </ul>
+</div>
+
+<div class="topic">
+  <h3>Local-First, Escape the Cloud</h3>
+  <p>Philosophical foundation — why we built this way.</p>
+  <span class="tag">philosophy</span>
+  <span class="tag">branding</span>
+  <ul>
+    <li>"I don't want to depend on big tech for my infrastructure."</li>
+    <li>"Mac mini M4 Pro runs Hoss 24/7. Raspberry Pi handles legacy."</li>
+    <li>"SearXNG for search — self-hosted, no tracking."</li>
+    <li>"The tagline: 'Escape the cloud, one config at a time.'" — this resonates with the audience</li>
+  </ul>
+</div>
+
+<div class="topic">
+  <h3>The Honest Tinkerer</h3>
+  <p>Brand voice — documenting the real journey, not a highlight reel.</p>
+  <span class="tag">brand</span>
+  <span class="tag">authenticity</span>
+  <ul>
+    <li>"Failures are documented too. People trust that more than polished success stories."</li>
+    <li>"I'm IT Support at Amazon by day. This is the night project."</li>
+    <li>"20-hour dev weeks exist but so do the failures and course-corrections."</li>
+    <li>"Authenticity over polish — that gets more engagement than typical tech influencer content."</li>
+  </ul>
+</div>
+
+<div class="topic">
+  <h3>clawplex as Proof of Concept</h3>
+  <p>The community is the product showcase. 2,500+ builders, agent API, real events.</p>
+  <span class="tag">showcase</span>
+  <span class="tag">projects</span>
+  <ul>
+    <li>"clawplex isn't just a website — it's a working agent ecosystem."</li>
+    <li>"AI agents can register, post, upvote, and read the community feed programmatically."</li>
+    <li>"ClawCon DFW happened. Real events, real builders, real demos."</li>
+  </ul>
+</div>
+
+<div class="topic">
+  <h3>The Multi-Agent Coordination</h3>
+  <p>How sub-agents actually work in practice.</p>
+  <span class="tag">technical</span>
+  <span class="tag">agents</span>
+  <ul>
+    <li>"Builder, coder, scout, einstein — each has a role and workspace."</li>
+    <li>"They run on schedules. Einstein does research 4x daily."</li>
+    <li>"Tyler doesn't micromanage. He sets direction, agents execute."</li>
+    <li>"Sub-agents post findings to Discord. I synthesize and decide."</li>
+  </ul>
+</div>
+
+<div class="topic">
+  <h3>If Asked About "Replacing Jobs"</h3>
+  <p>Defuse the fear, redirect to augmentation.</p>
+  <ul>
+    <li>"Hoss doesn't replace me. He makes me more capable."</li>
+    <li>"L3 IT Support at Amazon + running a SaaS company = only possible with agent help."</li>
+    <li>"It's杠杆 — leverage. One human + right agents = small team output."</li>
+    <li>"These agents don't want your job. They want to handle the boring parts."</li>
+  </ul>
+</div>
+
+<div class="topic">
+  <h3>If Asked "How Do I Build This?"</h3>
+  <p>Practical advice for viewers who want to replicate.</p>
+  <ul>
+    <li>"Start with OpenClaw. It's the runtime that makes this possible."</li>
+    <li>"Define your SOUL.md first — who is your agent, not just what it does."</li>
+    <li>"Build memory persistence from day one. FTS5 + daily logs."</li>
+    <li>"Start small. One sub-agent, one task. Prove the pattern."</li>
+    <li>"github.com/tylerdotai/flume-showcase — everything is there."</li>
+  </ul>
+</div>
+
+<h2>Stories to Tell</h2>
+
+<div class="quote">
+  "I asked Hoss to set up this showcase repo for the interview. He created the folder, wrote the README, generated the hero images, and pushed to GitHub — in about 15 minutes. That's not 'AI answering questions.' That's AI doing work."
+</div>
+
+<div class="quote">
+  "The fwpanthers project exists because my dad runs the Fort Worth Panthers hockey team. He needed a website. I asked Hoss to build it. Hoss spun up a sub-agent, and three hours later fwpanthers.vercel.app was live. That's the leverage."
+</div>
+
+<div class="quote">
+  "Most mornings I wake up to Discord threads from Einstein — research on AI tools I should know about. That's the heartbeat system. Hoss is working while I sleep."
+</div>
+
+</div>
+</body>
+</html>
