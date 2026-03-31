@@ -529,6 +529,191 @@
     </div>
   </div>
 
+  <!-- Section 8: The Stack -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2>The Stack — Tools We Use</h2>
+    </div>
+
+    <div class="narrative">
+      <p><strong>3 billion tokens.</strong> That's what we've burned through since January 31st, 2026. At full tilt, 16-18 hours a day, orchestrating agents and building.</p>
+      <br>
+      <p>Primary model: <em>MiniMax 2.7</em>. Here's why:</p>
+      <br>
+      <p>
+      • <strong>4500 prompts every 5 hours</strong> — we barely crack 20% utilization<br>
+      • <strong>$200 for the full year</strong> — all-in, everything included<br>
+      • <strong>Image generation</strong> — image-01 model, straight through OpenClaw<br>
+      • <strong>Video generation</strong> — Hailuo-2.3 for video clips<br>
+      • <strong>Audio/Speech</strong> — Speech-2.8, voice cloning, TTS<br>
+      • <strong>Music generation</strong> — Music-2.5 when we need it<br>
+      • <strong>Rate limits:</strong> 500 RPM, 20M TPM
+      </p>
+      <br>
+      <p>We don't worry about quotas. We just build.</p>
+    </div>
+
+    <div class="callout">
+      <p>"MiniMax isn't the most famous model. But at $200/year with 4500 prompts every 5 hours, I never think about token limits. I just work. That's the point."</p>
+      <cite>— Tyler Delano</cite>
+    </div>
+  </div>
+
+  <!-- Section 9: Skills -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2>The Skills — How We Use Them</h2>
+    </div>
+
+    <div class="narrative">
+      <p>Skills are how agents interact with the world. Each skill is a specialized toolset. Here's what we run:</p>
+    </div>
+
+    <table class="sop-table">
+      <thead>
+        <tr>
+          <th>Skill</th>
+          <th>What It Does</th>
+          <th>When We Use It</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>sendblue</td>
+          <td>iMessage/SMS via Sendblue CLI</td>
+          <td>Two-way messaging with Tyler, Robert</td>
+        </tr>
+        <tr>
+          <td>agentcard</td>
+          <td>Corporate Visa management</td>
+          <td>Purchases, balance checks (Tyler's approval required)</td>
+        </tr>
+        <tr>
+          <td>github</td>
+          <td>GitHub API, repo management</td>
+          <td>Commits, PRs, issues, repo ops</td>
+        </tr>
+        <tr>
+          <td>github-mcp</td>
+          <td>GitHub MCP server</td>
+          <td>Enhanced GitHub integrations</td>
+        </tr>
+        <tr>
+          <td>minimax-text</td>
+          <td>M2.7 text generation, prompt caching</td>
+          <td>All primary LLM work</td>
+        </tr>
+        <tr>
+          <td>minimax-mcp</td>
+          <td>MiniMax MCP server (web search, image)</td>
+          <td>Web search, image understanding</td>
+        </tr>
+        <tr>
+          <td>minimax-docx</td>
+          <td>Word document generation</td>
+          <td>Docs, reports, proposals</td>
+        </tr>
+        <tr>
+          <td>minimax-pdf</td>
+          <td>PDF generation</td>
+          <td>PDF exports, invoices</td>
+        </tr>
+        <tr>
+          <td>minimax-xlsx</td>
+          <td>Excel spreadsheet generation</td>
+          <td>Data tables, financial tracking</td>
+        </tr>
+        <tr>
+          <td>minimax-multimodal</td>
+          <td>TTS, voice cloning, music, video</td>
+          <td>Audio/video content creation</td>
+        </tr>
+        <tr>
+          <td>search</td>
+          <td>SearXNG aggregation, web search</td>
+          <td>All research, intel gathering</td>
+        </tr>
+        <tr>
+          <td>docker</td>
+          <td>Docker container management</td>
+          <td>Local dev, SearXNG stack</td>
+        </tr>
+        <tr>
+          <td>cloudflare</td>
+          <td>DNS, zones, API access</td>
+          <td>Domain management, CDN</td>
+        </tr>
+        <tr>
+          <td>vercel-deploy</td>
+          <td>Vercel deployments</td>
+          <td>Frontend deployments (clawplex, fwpanthers, etc)</td>
+        </tr>
+        <tr>
+          <td>railway</td>
+          <td>Railway deployment platform</td>
+          <td>Backend services when needed</td>
+        </tr>
+        <tr>
+          <td>openai-whisper</td>
+          <td>Speech-to-text via Whisper</td>
+          <td>Transcription when needed</td>
+        </tr>
+        <tr>
+          <td>spotify-player</td>
+          <td>Spotify controls</td>
+          <td>Music management</td>
+        </tr>
+        <tr>
+          <td>weather</td>
+          <td>Weather data</td>
+          <td>Location weather checks</td>
+        </tr>
+        <tr>
+          <td>things-mac</td>
+          <td>Things.app task management</td>
+          <td>Task tracking (Mac only)</td>
+        </tr>
+        <tr>
+          <td>apple-notes</td>
+          <td>Apple Notes integration</td>
+          <td>Note-taking when needed</td>
+        </tr>
+        <tr>
+          <td>imsg</td>
+          <td>iMessage via iPhone relay</td>
+          <td>SMS fallback</td>
+        </tr>
+        <tr>
+          <td>eval-agent</td>
+          <td>Agent evaluation framework</td>
+          <td>Testing agent quality</td>
+        </tr>
+        <tr>
+          <td>mini-agent-integration</td>
+          <td>MiniMax mini-agent CLI</td>
+          <td>Spawning sub-agent tasks</td>
+        </tr>
+        <tr>
+          <td>frontend-dev</td>
+          <td>Frontend best practices</td>
+          <td>React, Next.js, Tailwind</td>
+        </tr>
+        <tr>
+          <td>fullstack-dev</td>
+          <td>Full-stack patterns</td>
+          <td>Complex app architecture</td>
+        </tr>
+        <tr>
+          <td>openclaw-discord</td>
+          <td>Discord bot management</td>
+          <td>ClawPlex community Discord</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
 </div>
 
 <footer>
