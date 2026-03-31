@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flume SaaS Factory — AI Agent Showcase</title>
+  <style>
+    :root {
+      --bg-primary: #0a0a0f;
+      --bg-secondary: #12121a;
+      --bg-card: #1a1a24;
+      --accent: #ff6b00;
+      --text-primary: #f0f0f5;
+      --text-secondary: #a0a0b0;
+      --text-muted: #606070;
+      --border: #2a2a3a;
+      --font-display: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-display);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      padding: 32px 48px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .logo span { color: var(--text-primary); }
+    main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 48px;
+    }
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    h1 span { color: var(--accent); }
+    .subtitle {
+      font-size: 1.35rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin-bottom: 48px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+    .card h2 {
+      font-size: 1.2rem;
+      margin-bottom: 8px;
+      color: var(--accent);
+    }
+    .card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      flex: 1;
+    }
+    .card .arrow {
+      margin-top: 16px;
+      font-size: 1.5rem;
+      color: var(--accent);
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 48px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      text-align: center;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    @media (max-width: 768px) {
+      header, main { padding: 24px; }
+      h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Flume<span>SaaS</span></div>
+</header>
+
+<main>
+  <h1>AI Agent <span>Operations</span></h1>
+  <p class="subtitle">Where AI agents work as co-founders, not just assistants. This showcase demonstrates the autonomous agent infrastructure powering Flume SaaS Factory.</p>
+
+  <h2 class="section-title">Project Reports</h2>
+  <div class="grid">
+    <a href="PROJECTS/clawplex.html" class="card">
+      <h2>clawplex</h2>
+      <p>DFW AI builder community — 2,500+ members, agent API, live events</p>
+      <span class="arrow">↗</span>
+    </a>
+    <a href="PROJECTS/fort-os.html" class="card">
+      <h2>fort-os</h2>
+      <p>Operations automation — autonomous agents running the backend</p>
+      <span class="arrow">↗</span>
+    </a>
+    <a href="PROJECTS/fwpanthers.html" class="card">
+      <h2>fwpanthers</h2>
+      <p>Fort Worth Panthers hockey team website — built with OpenClaw agents</p>
+      <span class="arrow">↗</span>
+    </a>
+    <a href="PROJECTS/tylerdotai.html" class="card">
+      <h2>tylerdotai</h2>
+      <p>Personal brand + Flume home — currently being rebuilt</p>
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+
+  <h2 class="section-title">Agent Setup</h2>
+  <div class="grid">
+    <a href="AGENT-SETUP/index.html" class="card">
+      <h2>How Hoss Works</h2>
+      <p>Workspace anatomy, sub-agent coordination, heartbeat system, and memory architecture</p>
+      <span class="arrow">↗</span>
+    </a>
+    <a href="DEMOS/index.html" class="card">
+      <h2>Demo Guide</h2>
+      <p>Step-by-step walkthrough for live interview demonstrations</p>
+      <span class="arrow">↗</span>
+    </a>
+    <a href="INTERVIEW/talking-points.html" class="card">
+      <h2>Talking Points</h2>
+      <p>Key phrases, stories, and angles for the AI with Amit interview</p>
+      <span class="arrow">↗</span>
+    </a>
+  </div>
+</main>
+
+<footer>
+  <p>Flume SaaS Factory — <a href="https://tylerdotai.com">tylerdotai.com</a> — <a href="https://github.com/tylerdotai/flume-showcase">GitHub</a></p>
+</footer>
+
+</body>
+</html>
