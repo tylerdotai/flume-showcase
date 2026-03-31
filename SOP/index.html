@@ -272,17 +272,17 @@
       <div class="agent-card primary">
         <div class="role">Human / Conductor</div>
         <h3>Tyler Delano</h3>
-        <p>The conductor. Makes decisions, sets direction, talks to clients, works the day job. Runs 16-18 hours a day. Has skin in the game.</p>
+        <p>The conductor. Makes decisions, sets direction, works the day job, builds at night. Runs 16-18 hours a day. Has skin in the game.</p>
       </div>
       <div class="agent-card">
         <div class="role">AI Co-Founder</div>
         <h3>Hoss</h3>
-        <p>Primary agent. Reads memory files, maintains context across sessions, coordinates sub-agents, executes tasks, pushes back when Tyler's wrong. Lives in the workspace.</p>
+        <p>Primary agent. Reads memory files, maintains context, coordinates sub-agents, executes tasks, pushes back when Tyler's wrong. Lives in the workspace.</p>
       </div>
       <div class="agent-card">
         <div class="role">Specialists</div>
-        <h3>8 Sub-Agents</h3>
-        <p>Builder, Coder, Devops, Einstein, Marketer, Ops, Sales, Scout. Each runs on cron schedules for specific intelligence gathering or execution tasks.</p>
+        <h3>13 Sub-Agents</h3>
+        <p>Builder, Coder, Devops, Einstein, Marketer, Scout, Eval-Middleware, Commit-Scanner, PR-Inspector, Release-Herald, Webhook-Processor, Issue-Triage. On-demand execution.</p>
       </div>
     </div>
 
@@ -349,54 +349,110 @@
         <tr>
           <th>Agent</th>
           <th>Role</th>
-          <th>Schedule</th>
+          <th>Workspace</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><span class="tag purple">Hoss</span> Co-Founder</td>
-          <td>Primary executor, memory keeper, Tyler liaison, sub-agent coordinator. Always on.</td>
-          <td>On-demand + heartbeat checks</td>
+          <td><span class="tag purple">Hoss</span></td>
+          <td>Primary executor, memory keeper, Tyler liaison, sub-agent coordinator</td>
+          <td>~/.openclaw/workspace/</td>
         </tr>
         <tr>
           <td><span class="tag green">Builder</span></td>
-          <td>Builds and ships SaaS products. Frontend, backend, integrations.</td>
-          <td>On-demand</td>
+          <td>Builds and ships SaaS products. Frontend, backend, integrations</td>
+          <td>agents/builder/</td>
         </tr>
         <tr>
           <td><span class="tag blue">Coder</span></td>
-          <td>Test coverage, TDD enforcement, code quality audits.</td>
-          <td>9am, 3pm</td>
+          <td>Test coverage, TDD enforcement, code quality audits</td>
+          <td>agents/coder/</td>
         </tr>
         <tr>
           <td><span class="tag">Devops</span></td>
-          <td>Infrastructure, deployments, Docker, cloud config.</td>
-          <td>10am, 4pm</td>
+          <td>Infrastructure, deployments, Docker, cloud config</td>
+          <td>agents/devops/</td>
         </tr>
         <tr>
           <td><span class="tag green">Einstein</span></td>
-          <td>Autoresearch, skill improvement, trend analysis.</td>
-          <td>8am, 12pm, 4pm, 8pm</td>
+          <td>Autoresearch, skill improvement, trend analysis</td>
+          <td>agents/einstein/</td>
         </tr>
         <tr>
           <td><span class="tag blue">Marketer</span></td>
-          <td>Content, brand, audience research, community.</td>
-          <td>10am, 4pm</td>
-        </tr>
-        <tr>
-          <td><span class="tag purple">Ops</span></td>
-          <td>Financials, vendors, reliability, cost tracking.</td>
-          <td>9am, 3pm</td>
-        </tr>
-        <tr>
-          <td><span class="tag">Sales</span></td>
-          <td>Lead outreach, pipeline management, follow-ups.</td>
-          <td>On-demand</td>
+          <td>Content, brand, audience research, community</td>
+          <td>agents/marketer/</td>
         </tr>
         <tr>
           <td><span class="tag green">Scout</span></td>
-          <td>Market research, lead generation, competitive intel.</td>
-          <td>6pm (evening intel drop)</td>
+          <td>Market research, lead generation, competitive intel</td>
+          <td>agents/scout/</td>
+        </tr>
+        <tr>
+          <td><span class="tag purple">Eval-Middleware</span></td>
+          <td>Agent evaluation framework — runs evals on other agents</td>
+          <td>agents/eval-middleware/</td>
+        </tr>
+        <tr>
+          <td><span class="tag">Commit-Scanner</span></td>
+          <td>Scans git commits for issues, patterns, quality</td>
+          <td>agents/commit-scanner/</td>
+        </tr>
+        <tr>
+          <td><span class="tag">PR-Inspector</span></td>
+          <td>Pull request analysis and review</td>
+          <td>agents/pr-inspector/</td>
+        </tr>
+        <tr>
+          <td><span class="tag">Release-Herald</span></td>
+          <td>Release announcements, changelog management</td>
+          <td>agents/release-herald/</td>
+        </tr>
+        <tr>
+          <td><span class="tag">Webhook-Processor</span></td>
+          <td>Handles incoming webhooks, events</td>
+          <td>agents/webhook-processor/</td>
+        </tr>
+        <tr>
+          <td><span class="tag">Issue-Triage</span></td>
+          <td>GitHub issue categorization and routing</td>
+          <td>agents/issue-triage/</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="narrative" style="margin-top: 32px;">
+      <p><strong>Actual Cron Schedule</strong> — what actually runs on schedule:</p>
+    </div>
+
+    <table class="sop-table">
+      <thead>
+        <tr>
+          <th>Cron</th>
+          <th>Schedule</th>
+          <th>What It Does</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>meta-harness-evolution</td>
+          <td>3:00 AM CDT daily</td>
+          <td>Meta-learning — improves agent harness itself (currently in error state)</td>
+        </tr>
+        <tr>
+          <td>tom-doerr-daily-digest</td>
+          <td>6:00 AM CDT daily</td>
+          <td>Reads Tom Doerr's repo posts feed, generates AI agent insights</td>
+        </tr>
+        <tr>
+          <td>memory-index-rebuild</td>
+          <td>7:00 AM CDT daily (exact)</td>
+          <td>Rebuilds FTS5 full-text search index on memory files</td>
+        </tr>
+        <tr>
+          <td>hoss-daily-standup</td>
+          <td>8:05 AM CDT daily (exact)</td>
+          <td>Hoss wake-up check — memory health, git status, cron alerts</td>
         </tr>
       </tbody>
     </table>
