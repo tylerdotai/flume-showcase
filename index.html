@@ -127,6 +127,21 @@
       justify-content: center;
       animation: fadeInUp 0.8s ease 0.3s both;
     }
+    .hero-pics {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin-bottom: 40px;
+      animation: fadeInUp 0.8s ease 0.25s both;
+    }
+    .hero-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 30px var(--accent-glow);
+    }
     .focus-tag {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -380,6 +395,10 @@
   </div>
   <h1>Agentic <span>Engineering</span></h1>
   <p>Building AI systems that actually work. Prompt engineering, multi-agent orchestration, and production-ready AI wrappers — not theoretical, shipped.</p>
+  <div class="hero-pics">
+    <img src="assets/images/tyler-photo.jpg" alt="Tyler Delano" class="hero-pic">
+    <img src="assets/images/hoss-photo.jpg" alt="Hoss" class="hero-pic">
+  </div>
   <div class="focus-areas">
     <div class="focus-tag">Agentic <span>Engineering</span></div>
     <div class="focus-tag">Prompt <span>Engineering</span></div>
