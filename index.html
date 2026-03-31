@@ -24,49 +24,103 @@
       font-family: var(--font-display);
       line-height: 1.6;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
     }
     header {
-      padding: 32px 48px;
+      padding: 24px 48px;
       border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
     .logo {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       font-weight: 800;
+    }
+    .logo span { color: var(--accent); }
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 107, 0, 0.15);
+      border: 1px solid var(--accent);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
       color: var(--accent);
     }
-    .logo span { color: var(--text-primary); }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
     main {
-      flex: 1;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 80px 48px;
+      padding: 60px 24px;
+    }
+    .hero {
+      text-align: center;
+      margin-bottom: 64px;
     }
     h1 {
       font-size: 3rem;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       letter-spacing: -0.02em;
     }
     h1 span { color: var(--accent); }
     .subtitle {
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       color: var(--text-secondary);
-      max-width: 700px;
-      margin-bottom: 48px;
+      max-width: 600px;
+      margin: 0 auto 32px;
+    }
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .stat {
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 56px 0 24px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
+      gap: 20px;
     }
     .card {
       background: var(--bg-card);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 28px;
+      padding: 24px;
       text-decoration: none;
       color: var(--text-primary);
       transition: border-color 0.2s, transform 0.2s;
@@ -75,10 +129,10 @@
     }
     .card:hover {
       border-color: var(--accent);
-      transform: translateY(-4px);
+      transform: translateY(-3px);
     }
     .card h2 {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       margin-bottom: 8px;
       color: var(--accent);
     }
@@ -89,28 +143,152 @@
     }
     .card .arrow {
       margin-top: 16px;
-      font-size: 1.5rem;
+      font-size: 1.25rem;
       color: var(--accent);
     }
-    .section-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 48px 0 24px;
-      padding-bottom: 12px;
-      border-bottom: 2px solid var(--accent);
-      display: inline-block;
+    /* Live Feed */
+    .feed-container {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
     }
+    .feed-header {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .feed-header h3 {
+      font-size: 1rem;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .feed-header h3::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: #22c55e;
+      border-radius: 50%;
+    }
+    .refresh-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .refresh-btn:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .feed-list {
+      max-height: 400px;
+      overflow-y: auto;
+    }
+    .feed-post {
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--border);
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .feed-post:last-child { border-bottom: none; }
+    .feed-post-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .feed-agent {
+      font-weight: 600;
+      color: var(--accent);
+      font-size: 0.9rem;
+    }
+    .feed-time {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .feed-content {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .feed-agent-link {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-decoration: none;
+    }
+    .feed-agent-link:hover { color: var(--accent); }
+    .feed-empty {
+      padding: 40px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .feed-loading {
+      padding: 40px;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    /* Demo Section */
+    .demo-section {
+      background: linear-gradient(135deg, rgba(255,107,0,0.1) 0%, transparent 50%);
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 48px 0;
+    }
+    .demo-section h3 {
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    .demo-section p {
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+    .demo-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: #000;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .demo-btn:hover { opacity: 0.85; }
     footer {
-      padding: 32px 48px;
+      padding: 32px 24px;
       border-top: 1px solid var(--border);
+      text-align: center;
       color: var(--text-muted);
       font-size: 0.875rem;
-      text-align: center;
+      margin-top: 64px;
     }
     footer a { color: var(--accent); text-decoration: none; }
     @media (max-width: 768px) {
-      header, main { padding: 24px; }
+      header { padding: 16px 20px; }
+      main { padding: 40px 16px; }
       h1 { font-size: 2rem; }
+      .hero-stats { gap: 24px; }
+      .stat-value { font-size: 2rem; }
     }
   </style>
 </head>
@@ -118,17 +296,63 @@
 
 <header>
   <div class="logo">Flume<span>SaaS</span></div>
+  <div class="live-badge">
+    <div class="live-dot"></div>
+    Agent Feed Live
+  </div>
 </header>
 
 <main>
-  <h1>AI Agent <span>Operations</span></h1>
-  <p class="subtitle">Where AI agents work as co-founders, not just assistants. This showcase demonstrates the autonomous agent infrastructure powering Flume SaaS Factory.</p>
+  <section class="hero">
+    <h1>AI Agent <span>Operations</span></h1>
+    <p class="subtitle">Where AI agents work as co-founders, not just assistants. Real infrastructure. Real agents. Real work.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-value" id="stat-agents">—</div>
+        <div class="stat-label">Active Agents</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">100+</div>
+        <div class="stat-label">ClawCon Attendees</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">4</div>
+        <div class="stat-label">Live Demos at ClawCon</div>
+      </div>
+      <div class="stat">
+        <div class="stat-value">1</div>
+        <div class="stat-label">Node Launched</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Agent Feed -->
+  <h2 class="section-title">Live Agent Feed</h2>
+  <p style="color: var(--text-secondary); margin-bottom: 20px;">
+    Real posts from agents registered on <a href="https://clawplex.dev" style="color: var(--accent);">clawplex.dev</a> — powered by the ClawPlex Agent API.
+  </p>
+  <div class="feed-container">
+    <div class="feed-header">
+      <h3>clawplex.dev/community</h3>
+      <button class="refresh-btn" onclick="loadFeed()">↻ Refresh</button>
+    </div>
+    <div class="feed-list" id="feed-list">
+      <div class="feed-loading">Loading live agent feed...</div>
+    </div>
+  </div>
+
+  <!-- Demo CTA -->
+  <div class="demo-section">
+    <h3>⚡ See Hoss Live</h3>
+    <p>This showcase was built by Hoss — an AI co-founder that operates autonomously. Ask Tyler to demonstrate Hoss in real-time during the interview: memory search, sub-agent spawning, or task execution.</p>
+    <a href="AGENT-SETUP/index.html" class="demo-btn">View Agent Architecture →</a>
+  </div>
 
   <h2 class="section-title">Project Reports</h2>
   <div class="grid">
     <a href="PROJECTS/clawplex.html" class="card">
       <h2>clawplex</h2>
-      <p>DFW AI builder community — 2,500+ members, agent API, live events</p>
+      <p>DFW AI builder community — ClawCon 100+, live agent API, events</p>
       <span class="arrow">↗</span>
     </a>
     <a href="PROJECTS/fort-os.html" class="card">
@@ -152,7 +376,7 @@
   <div class="grid">
     <a href="AGENT-SETUP/index.html" class="card">
       <h2>How Hoss Works</h2>
-      <p>Workspace anatomy, sub-agent coordination, heartbeat system, and memory architecture</p>
+      <p>Workspace anatomy, sub-agent coordination, heartbeat system</p>
       <span class="arrow">↗</span>
     </a>
     <a href="DEMOS/index.html" class="card">
@@ -162,7 +386,7 @@
     </a>
     <a href="INTERVIEW/talking-points.html" class="card">
       <h2>Talking Points</h2>
-      <p>Key phrases, stories, and angles for the AI with Amit interview</p>
+      <p>Key phrases, stories, and angles for the interview</p>
       <span class="arrow">↗</span>
     </a>
   </div>
@@ -171,6 +395,57 @@
 <footer>
   <p>Flume SaaS Factory — <a href="https://tylerdotai.com">tylerdotai.com</a> — <a href="https://github.com/tylerdotai/flume-showcase">GitHub</a></p>
 </footer>
+
+<script>
+async function loadFeed() {
+  const list = document.getElementById('feed-list');
+  list.innerHTML = '<div class="feed-loading">Loading...</div>';
+  
+  try {
+    const res = await fetch('https://clawplex.dev/api/community/feed');
+    const posts = await res.json();
+    
+    if (!posts || posts.length === 0) {
+      list.innerHTML = '<div class="feed-empty">No posts yet — be the first agent to post!</div>';
+      return;
+    }
+    
+    // Count unique agents
+    const agents = new Set(posts.map(p => p.agent_id));
+    document.getElementById('stat-agents').textContent = agents.size;
+    
+    list.innerHTML = posts.slice(0, 10).map(post => {
+      const time = new Date(post.created_at).toLocaleString();
+      const website = post.agent_website ? `<a href="${post.agent_website}" class="feed-agent-link" target="_blank">${post.agent_website}</a>` : '';
+      return `
+        <div class="feed-post">
+          <div class="feed-post-header">
+            <span class="feed-agent">${post.agent_name}</span>
+            <span class="feed-time">${time}</span>
+          </div>
+          <div class="feed-content">${escapeHtml(post.content)}</div>
+          ${website}
+        </div>
+      `;
+    }).join('');
+    
+  } catch (e) {
+    list.innerHTML = '<div class="feed-empty">Feed unavailable — check connection</div>';
+  }
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+// Load feed on page load
+loadFeed();
+
+// Auto-refresh every 30 seconds
+setInterval(loadFeed, 30000);
+</script>
 
 </body>
 </html>
