@@ -3,39 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Agentic Engineering — AI That Actually Works</title>
+  <title>Agentic Engineering — Tyler Delano</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg-primary: #0a0a0f;
-      --bg-secondary: #111118;
-      --bg-card: #18181f;
+      --bg-secondary: #0f0f14;
+      --bg-card: #141418;
       --accent: #ff6b00;
-      --accent-glow: rgba(255, 107, 0, 0.4);
-      --text-primary: #f0f0f5;
-      --text-secondary: #9090a0;
-      --text-muted: #505060;
-      --border: #2a2a35;
-      --font-display: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+      --accent-dim: rgba(255, 107, 0, 0.15);
+      --text-primary: #f5f5f5;
+      --text-secondary: #888;
+      --text-muted: #555;
+      --border: #2a2a30;
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-editorial: 'Newsreader', serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       background: var(--bg-primary);
       color: var(--text-primary);
       font-family: var(--font-display);
-      line-height: 1.6;
+      line-height: 1.5;
       min-height: 100vh;
-      overflow-x: hidden;
     }
-    /* Navbar */
+    /* Navigation - sharp edges, visible structure */
     nav {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
       z-index: 100;
-      background: rgba(10, 10, 15, 0.9);
-      backdrop-filter: blur(20px);
+      background: var(--bg-primary);
       border-bottom: 1px solid var(--border);
       padding: 0 48px;
       height: 64px;
@@ -44,365 +45,330 @@
       align-items: center;
     }
     .nav-logo {
-      font-size: 1.1rem;
-      font-weight: 800;
+      font-size: 1rem;
+      font-weight: 700;
       color: var(--text-primary);
       text-decoration: none;
+      letter-spacing: -0.02em;
     }
-    .nav-logo span { color: var(--accent); }
     .nav-links {
       display: flex;
-      gap: 32px;
+      gap: 40px;
       list-style: none;
     }
     .nav-links a {
       color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       font-weight: 500;
       transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--accent); }
-    /* Hero */
+    /* Hero - editorial layout */
     .hero {
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+      padding: 120px 48px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
       align-items: center;
-      text-align: center;
-      padding: 120px 24px 80px;
-      position: relative;
-      overflow: hidden;
+      max-width: 1400px;
+      margin: 0 auto;
     }
-    .hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 1000px;
-      height: 1000px;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      opacity: 0.25;
-      pointer-events: none;
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; gap: 40px; padding: 100px 24px 60px; }
     }
+    .hero-left {}
     .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 107, 0, 0.1);
+      display: inline-block;
+      background: var(--accent-dim);
       border: 1px solid var(--accent);
-      padding: 8px 16px;
-      border-radius: 24px;
-      font-size: 0.85rem;
+      padding: 6px 14px;
+      font-size: 0.75rem;
       font-weight: 600;
       color: var(--accent);
-      margin-bottom: 32px;
-      animation: fadeInUp 0.6s ease;
-    }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
     .hero h1 {
-      font-size: 4rem;
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      margin-bottom: 24px;
-      animation: fadeInUp 0.8s ease 0.1s both;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin-bottom: 32px;
     }
-    .hero h1 span { color: var(--accent); }
+    .hero h1 span { 
+      color: var(--accent);
+      font-style: italic;
+      font-family: var(--font-editorial);
+    }
     .hero p {
-      font-size: 1.35rem;
+      font-size: 1.15rem;
       color: var(--text-secondary);
-      max-width: 700px;
-      margin-bottom: 48px;
-      animation: fadeInUp 0.8s ease 0.2s both;
+      max-width: 480px;
+      margin-bottom: 40px;
+      line-height: 1.7;
     }
     .focus-areas {
       display: flex;
-      gap: 16px;
+      gap: 12px;
       flex-wrap: wrap;
-      justify-content: center;
-      animation: fadeInUp 0.8s ease 0.3s both;
-    }
-    .hero-pics {
-      display: flex;
-      gap: 24px;
-      justify-content: center;
-      margin-bottom: 40px;
-      animation: fadeInUp 0.8s ease 0.25s both;
-    }
-    .hero-pic {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      box-shadow: 0 0 30px var(--accent-glow);
     }
     .focus-tag {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      padding: 12px 20px;
-      border-radius: 12px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      padding: 10px 18px;
+      font-size: 0.85rem;
+      font-weight: 500;
       color: var(--text-primary);
-      transition: border-color 0.3s, transform 0.3s;
-    }
-    .focus-tag:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
     }
     .focus-tag span { color: var(--accent); }
+    /* Hero right - photos asymmetric */
+    .hero-right {
+      position: relative;
+    }
+    .hero-pics {
+      display: flex;
+      gap: 0;
+      position: relative;
+    }
+    .hero-pic {
+      width: 180px;
+      height: 220px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
+    .hero-pic:first-child {
+      margin-right: -40px;
+      z-index: 2;
+    }
+    .hero-pic:last-child {
+      margin-left: -40px;
+      z-index: 1;
+      margin-top: 60px;
+    }
     /* Sections */
     section {
-      padding: 100px 24px;
-      max-width: 1200px;
+      padding: 100px 48px;
+      max-width: 1400px;
       margin: 0 auto;
     }
+    @media (max-width: 768px) {
+      section { padding: 60px 24px; }
+    }
     .section-label {
-      font-size: 0.75rem;
+      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       color: var(--accent);
       margin-bottom: 16px;
       font-weight: 600;
     }
     .section-title {
       font-size: 2.5rem;
-      font-weight: 800;
+      font-weight: 700;
+      letter-spacing: -0.03em;
       margin-bottom: 16px;
-      letter-spacing: -0.02em;
+      font-family: var(--font-editorial);
+      font-style: italic;
     }
     .section-desc {
       color: var(--text-secondary);
-      font-size: 1.1rem;
-      max-width: 600px;
-      margin-bottom: 48px;
+      font-size: 1rem;
+      max-width: 540px;
+      margin-bottom: 56px;
+      line-height: 1.7;
     }
-    /* What We Do */
+    /* Services - grid with visible lines */
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border);
+      border-left: 1px solid var(--border);
+    }
+    @media (max-width: 900px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .services-grid { grid-template-columns: 1fr; }
     }
     .service-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      transition: transform 0.4s ease, border-color 0.3s;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 36px 32px;
+      transition: background 0.2s;
     }
     .service-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--accent);
+      background: var(--accent-dim);
     }
     .service-icon {
-      width: 48px;
-      height: 48px;
-      background: rgba(255, 107, 0, 0.1);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      width: 40px;
+      height: 40px;
       margin-bottom: 20px;
     }
     .service-icon svg {
-      width: 24px;
-      height: 24px;
+      width: 100%;
+      height: 100%;
       stroke: var(--accent);
       fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      stroke-width: 1.5;
     }
     .service-card h3 {
-      font-size: 1.25rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 600;
       margin-bottom: 12px;
+      letter-spacing: -0.01em;
     }
     .service-card p {
       color: var(--text-secondary);
-      font-size: 0.95rem;
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
-    /* Projects */
+    /* Projects - magazine layout */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
+      gap: 2px;
+      background: var(--border);
     }
     @media (max-width: 768px) {
       .projects-grid { grid-template-columns: 1fr; }
     }
     .project-card {
       background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      overflow: hidden;
       text-decoration: none;
       color: var(--text-primary);
-      transition: transform 0.4s ease, border-color 0.3s;
       display: block;
+      position: relative;
+      overflow: hidden;
     }
-    .project-card:hover {
-      transform: translateY(-8px);
-    }
-    .project-card:nth-child(1):hover { border-color: #22c55e; }
-    .project-card:nth-child(2):hover { border-color: var(--accent); }
-    .project-card:nth-child(3):hover { border-color: #3b82f6; }
-    .project-card:nth-child(4):hover { border-color: #a855f7; }
     .project-card-img {
-      height: 160px;
-      background: var(--bg-secondary);
+      height: 280px;
       overflow: hidden;
     }
     .project-card-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
+      filter: grayscale(30%);
+      transition: filter 0.4s, transform 0.4s;
     }
     .project-card:hover .project-card-img img {
-      transform: scale(1.05);
+      filter: grayscale(0%);
+      transform: scale(1.03);
     }
     .project-card-body {
-      padding: 24px;
+      padding: 28px 32px;
     }
     .project-card h3 {
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       font-weight: 700;
       margin-bottom: 8px;
+      letter-spacing: -0.02em;
     }
     .project-card p {
       color: var(--text-secondary);
       font-size: 0.9rem;
     }
-    /* Demo */
+    /* Demo section */
     .demo-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 48px;
-      position: relative;
-      overflow: hidden;
-    }
-    .demo-section::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, var(--accent), #ff9500, var(--accent));
-      background-size: 200% 100%;
-      animation: gradientSlide 3s linear infinite;
-    }
-    @keyframes gradientSlide {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 200% 0%; }
+      padding: 56px;
     }
     .demo-section h3 {
       font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 32px;
+      margin-bottom: 40px;
+      letter-spacing: -0.02em;
     }
     .demo-items {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+      margin-bottom: 40px;
+    }
+    @media (max-width: 900px) {
+      .demo-items { grid-template-columns: repeat(2, 1fr); }
     }
     .demo-item {
       background: var(--bg-secondary);
-      border-radius: 12px;
-      padding: 20px;
-      transition: background 0.3s;
-    }
-    .demo-item:hover {
-      background: rgba(255, 107, 0, 0.1);
+      padding: 24px;
     }
     .demo-item-num {
-      font-size: 2rem;
-      font-weight: 900;
+      font-size: 2.5rem;
+      font-weight: 700;
       color: var(--accent);
-      font-family: var(--font-mono);
+      font-family: var(--font-editorial);
+      font-style: italic;
       line-height: 1;
+      margin-bottom: 8px;
     }
     .demo-item-label {
       font-weight: 600;
-      margin: 8px 0 4px;
+      font-size: 0.95rem;
+      margin-bottom: 4px;
     }
     .demo-item-desc {
       font-size: 0.8rem;
       color: var(--text-muted);
     }
-    /* Arch */
+    /* Arch box */
     .arch-box {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 32px;
-      font-family: var(--font-mono);
+      padding: 28px 32px;
+      font-family: 'Courier New', monospace;
       font-size: 0.85rem;
-      margin-top: 32px;
-    }
-    .arch-box .line {
-      padding: 4px 0;
-      display: flex;
-      gap: 16px;
+      line-height: 1.8;
     }
     .arch-box .dim { color: var(--text-muted); }
-    .arch-box .key { color: var(--accent); }
+    .arch-box .key { color: var(--accent); font-weight: bold; }
     .arch-box .val { color: var(--text-secondary); }
     /* Footer */
     footer {
-      padding: 64px 24px;
-      text-align: center;
+      padding: 60px 48px;
       border-top: 1px solid var(--border);
-      margin-top: 64px;
+      margin-top: 80px;
     }
     footer p {
       color: var(--text-muted);
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
     footer a { color: var(--accent); text-decoration: none; }
-    .icon {
-      width: 20px;
-      height: 20px;
-      display: inline-block;
-      vertical-align: middle;
-    }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">Tyler<span>Delano</span></a>
+  <a href="/" class="nav-logo">Tyler Delano</a>
   <ul class="nav-links">
     <li><a href="#services">What We Do</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#demo">Live Demo</a></li>
+    <li><a href="#demo">Demo</a></li>
     <li><a href="https://github.com/tylerdotai" target="_blank">GitHub</a></li>
   </ul>
 </nav>
 
 <section class="hero">
-  <div class="hero-badge">
-    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-    Live on AI with Amit
+  <div class="hero-left">
+    <div class="hero-badge">Live on AI with Amit</div>
+    <h1>Agentic<br><span>Engineering</span></h1>
+    <p>Building AI systems that actually work. Prompt engineering, multi-agent orchestration, and production-ready builds — not theoretical, shipped.</p>
+    <div class="focus-areas">
+      <div class="focus-tag">Agentic <span>Engineering</span></div>
+      <div class="focus-tag">Prompt <span>Engineering</span></div>
+      <div class="focus-tag">Agent <span>Orchestration</span></div>
+    </div>
   </div>
-  <h1>Agentic <span>Engineering</span></h1>
-  <p>Building AI systems that actually work. Prompt engineering, multi-agent orchestration, and production-ready AI wrappers — not theoretical, shipped.</p>
-  <div class="hero-pics">
-    <img src="assets/images/tyler-photo.jpg" alt="Tyler Delano" class="hero-pic">
-    <img src="assets/images/hoss-photo.jpg" alt="Hoss" class="hero-pic">
-  </div>
-  <div class="focus-areas">
-    <div class="focus-tag">Agentic <span>Engineering</span></div>
-    <div class="focus-tag">Prompt <span>Engineering</span></div>
-    <div class="focus-tag">Agent <span>Orchestration</span></div>
+  <div class="hero-right">
+    <div class="hero-pics">
+      <img src="assets/images/tyler-photo.jpg" alt="Tyler Delano" class="hero-pic">
+      <img src="assets/images/hoss-photo.jpg" alt="Hoss" class="hero-pic">
+    </div>
   </div>
 </section>
 
@@ -424,18 +390,18 @@
         <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       </div>
       <h3>Prompt Engineering</h3>
-      <p>Getting AI to do what you want — consistently. Not one-off prompts, but systems that handle edge cases and improve over time.</p>
+      <p>Getting AI to do what you want — consistently. Not one-off prompts, but systems that handle edge cases.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg>
       </div>
       <h3>Agent Orchestration</h3>
-      <p>Coordinating multiple AI agents to handle complex workflows. Each agent specialized, working together autonomously.</p>
+      <p>Coordinating multiple AI agents to handle complex workflows. Each agent specialized, working together.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">
-        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="0"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
       </div>
       <h3>Software & Web Build</h3>
       <p>Full-stack apps, landing pages, SaaS products. Built with AI agent teams — fast without cutting corners.</p>
@@ -445,14 +411,14 @@
         <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
       </div>
       <h3>AI Wrappers</h3>
-      <p>Adding AI capabilities to existing products. APIs, integrations, and interfaces that make AI actually useful.</p>
+      <p>Adding AI capabilities to existing products. APIs, integrations, and interfaces that make AI useful.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">
         <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       </div>
       <h3>Hackathon Teams</h3>
-      <p>Competitive AI agent builds. We bring the team, the infrastructure, and the execution — you bring the idea.</p>
+      <p>Competitive AI agent builds. We bring the team, the infrastructure, and the execution.</p>
     </div>
   </div>
 </section>
@@ -532,11 +498,12 @@
     </div>
     
     <div class="arch-box">
-      <div class="line"><span class="dim">The Stack</span></div>
-      <div class="line"><span class="key">OpenClaw</span><span class="val">— agent runtime + orchestration</span></div>
-      <div class="line"><span class="key">MiniMax M2.7</span><span class="val">— primary model</span></div>
-      <div class="line"><span class="key">Sub-agents</span><span class="val">— einstein, scout, coder, builder</span></div>
-      <div class="line"><span class="key">Memory</span><span class="val">— daily logs + FTS5 searchable</span></div>
+      <div><span class="dim">~/.openclaw/workspace/</span></div>
+      <div><span class="key">SOUL.md</span> <span class="val">— co-founder identity, not a chatbot</span></div>
+      <div><span class="key">MEMORY.md</span> <span class="val">— long-term memory across sessions</span></div>
+      <div><span class="key">HEARTBEAT.md</span> <span class="val">— autonomous checks while Tyler sleeps</span></div>
+      <div><span class="key">memory/</span> <span class="val">— daily logs + FTS5 searchable index</span></div>
+      <div><span class="key">agents/</span> <span class="val">— einstein, scout, coder, builder</span></div>
     </div>
   </div>
 </section>
