@@ -354,6 +354,59 @@
     }
     footer a { color: var(--accent-cool); text-decoration: none; }
     footer a:hover { color: var(--accent); }
+
+    /* Pixel Characters */
+    .pixel-section {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 120px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 50;
+    }
+    .pixel-track {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      height: 80px;
+    }
+    .pixel-char {
+      position: absolute;
+      bottom: 0;
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+    .tyler-sprite {
+      width: 64px;
+      animation: walk-across 18s linear infinite;
+    }
+    .hoss-sprite {
+      width: 64px;
+      animation: walk-across 18s linear infinite 2s;
+    }
+    @keyframes walk-across {
+      0% { left: -80px; }
+      40% { left: calc(50% - 40px); }
+      45% { left: calc(50% - 40px); transform: scaleX(-1); }
+      50% { left: calc(50% - 40px); transform: scaleX(1); }
+      55% { left: calc(50% - 40px); transform: scaleX(-1); }
+      60% { left: calc(50% - 40px); transform: scaleX(1); }
+      65% { left: calc(50% - 40px); }
+      100% { left: calc(100% + 80px); }
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+    .pixel-char {
+      animation: walk-across 18s linear infinite, bounce 0.4s ease-in-out infinite;
+    }
+    .pixel-char:hover {
+      animation-play-state: paused;
+    }
   </style>
 </head>
 <body>
@@ -522,6 +575,13 @@
     </div>
   </div>
 </section>
+
+<div class="pixel-section">
+  <div class="pixel-track">
+    <img src="assets/images/tyler-pixel.png" alt="Tyler" class="pixel-char tyler-sprite" style="animation-delay: 0s;">
+    <img src="assets/images/hoss-pixel.png" alt="Hoss" class="pixel-char hoss-sprite" style="animation-delay: -2s;">
+  </div>
+</div>
 
 <footer>
   <p><a href="https://tylerdotai.com">tylerdotai.com</a> — <a href="https://github.com/tylerdotai">GitHub</a> — DFW, Texas</p>
