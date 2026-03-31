@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>fort-os — Operations Automation</title>
+  <title>FortOS — Always-On AI Workforce for Trade Contractors</title>
   <style>
     :root {
       --bg-primary: #0a0a0f;
       --bg-secondary: #12121a;
       --bg-card: #1a1a24;
-      --accent: #ff6b00;
-      --accent-glow: rgba(255, 107, 0, 0.3);
+      --accent: #22c55e;
+      --accent-alt: #fbbf24;
       --text-primary: #f0f0f5;
       --text-secondary: #a0a0b0;
       --text-muted: #606070;
@@ -28,14 +28,14 @@
     }
     .hero {
       position: relative;
-      height: 480px;
+      height: 420px;
       overflow: hidden;
     }
     .hero img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.7;
+      opacity: 0.5;
     }
     .hero-overlay {
       position: absolute;
@@ -46,14 +46,14 @@
       padding: 48px;
     }
     .hero-content h1 {
-      font-size: 3.5rem;
+      font-size: 3rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       margin-bottom: 12px;
     }
     .hero-content h1 span { color: var(--accent); }
     .hero-content p {
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       color: var(--text-secondary);
       max-width: 600px;
     }
@@ -67,96 +67,177 @@
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
+    }
+    .badge.price {
+      background: var(--accent-alt);
     }
     .container {
       max-width: 1100px;
       margin: 0 auto;
-      padding: 64px 24px;
+      padding: 48px 24px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
-    }
-    .card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 32px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .card:hover {
-      border-color: var(--accent);
-      transform: translateY(-2px);
-    }
-    .card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-      color: var(--accent);
-    }
-    .card p {
-      color: var(--text-secondary);
-      font-size: 0.95rem;
-    }
-    .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
       margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--accent); }
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 40px 0 20px;
       padding-bottom: 12px;
       border-bottom: 2px solid var(--accent);
       display: inline-block;
     }
+    .highlight {
+      font-size: 1.1rem;
+      color: var(--text-secondary);
+      max-width: 700px;
+      margin-bottom: 24px;
+    }
+    .highlight strong { color: var(--text-primary); }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 16px;
+      margin: 24px 0 40px;
+    }
+    .stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .stat-box .value {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent);
+      font-family: var(--font-mono);
+    }
+    .stat-box .label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
     .feature-list {
       list-style: none;
-      margin-bottom: 48px;
+      margin-bottom: 32px;
     }
     .feature-list li {
-      padding: 16px 0;
+      padding: 14px 0;
       border-bottom: 1px solid var(--border);
       display: flex;
       align-items: flex-start;
-      gap: 16px;
+      gap: 12px;
     }
     .feature-list li::before {
-      content: "⚡";
+      content: "✓";
       color: var(--accent);
-      font-size: 1.25rem;
+      font-size: 1rem;
       flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .trades-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .trade-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .trade-card h4 {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 1rem;
+    }
+    .trade-card ul {
+      list-style: none;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+    .trade-card li {
+      padding: 4px 0;
     }
     .tech-stack {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 48px;
+      gap: 10px;
+      margin-bottom: 32px;
     }
     .tech-tag {
       background: var(--bg-secondary);
       border: 1px solid var(--border);
-      padding: 8px 16px;
+      padding: 6px 14px;
       border-radius: 6px;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       font-family: var(--font-mono);
       color: var(--text-secondary);
     }
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.9rem;
+    }
+    .comparison-table th {
+      text-align: left;
+      padding: 12px 16px;
+      background: var(--bg-card);
+      border-bottom: 2px solid var(--accent);
+      color: var(--text-primary);
+    }
+    .comparison-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-secondary);
+    }
+    .comparison-table td:first-child {
+      color: var(--text-primary);
+    }
+    .old-way {
+      border-left: 3px solid #ef4444;
+      background: rgba(239,68,68,0.1);
+      padding: 16px 20px;
+      margin: 8px 0;
+      border-radius: 0 6px 6px 0;
+    }
+    .new-way {
+      border-left: 3px solid var(--accent);
+      background: rgba(34,197,94,0.1);
+      padding: 16px 20px;
+      margin: 8px 0;
+      border-radius: 0 6px 6px 0;
+    }
     .links {
       display: flex;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
-      margin-top: 48px;
+      margin-top: 40px;
     }
     .link-btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       background: var(--accent);
       color: #000;
-      padding: 12px 24px;
+      padding: 10px 20px;
       border-radius: 8px;
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 0.9rem;
       transition: opacity 0.2s;
     }
     .link-btn:hover { opacity: 0.85; }
@@ -167,123 +248,189 @@
     }
     footer {
       text-align: center;
-      padding: 48px 24px;
+      padding: 32px 24px;
       color: var(--text-muted);
-      font-size: 0.875rem;
+      font-size: 0.8rem;
       border-top: 1px solid var(--border);
-      margin-top: 64px;
+      margin-top: 48px;
     }
   </style>
 </head>
 <body>
 
 <div class="hero">
-  <img src="../assets/images/fort-os-hero.png" alt="fort-os — Operations Automation">
+  <img src="../assets/images/fort-os-hero.png" alt="FortOS — Always-On AI Workforce">
   <div class="hero-overlay">
     <div class="hero-content">
-      <span class="badge">Active</span>
-      <h1>fort-<span>os</span></h1>
-      <p>Operations automation for Tyler — intelligent systems that run the backend so the humans can focus on building.</p>
+      <span class="badge">Live</span>
+      <h1>Fort<span>OS</span></h1>
+      <p>Your always-on AI workforce — answers calls, books appointments, sends quotes, follows up with leads 24/7.</p>
     </div>
   </div>
 </div>
 
 <div class="container">
+  <a href="../index.html" class="back-link">← Back to Showcase</a>
+
+  <div class="stats-grid">
+    <div class="stat-box">
+      <div class="value">$250</div>
+      <div class="label">per month</div>
+    </div>
+    <div class="stat-box">
+      <div class="value">24/7</div>
+      <div class="label">always-on</div>
+    </div>
+    <div class="stat-box">
+      <div class="value"><60s</div>
+      <div class="label">to launch</div>
+    </div>
+    <div class="stat-box">
+      <div class="value">~135M</div>
+      <div class="label">tokens/mo</div>
+    </div>
+  </div>
 
   <section>
     <h2 class="section-title">What It Is</h2>
-    <p style="color: var(--text-secondary); max-width: 700px; font-size: 1.1rem; margin-bottom: 32px;">
-      fort-os is the operational backbone of Tyler's AI infrastructure. It handles the behind-the-scenes automation that keeps multiple projects running — from scheduled tasks to system monitoring to intelligent workflows that respond to events.
+    <p class="highlight">
+      <strong>An AI agent that works while you sleep.</strong> FortOS answers your phone, books appointments, sends quotes, and follows up with leads — 24/7, even at 2am. No extra staff needed.
     </p>
+    <p class="highlight">
+      Built in <strong>Fort Worth, TX</strong>. Powered by OpenClaw. Designed for trade contractors who can't afford to miss a call.
+    </p>
+  </section>
+
+  <section>
+    <h2 class="section-title">Who It's For</h2>
+    <div class="trades-grid">
+      <div class="trade-card">
+        <h4>HVAC</h4>
+        <ul>
+          <li>Emergency texts at midnight</li>
+          <li>Appointment scheduling</li>
+          <li>Quote follow-ups</li>
+          <li>Seasonal maintenance reminders</li>
+        </ul>
+      </div>
+      <div class="trade-card">
+        <h4>Plumber / Electrician</h4>
+        <ul>
+          <li>Availability questions</li>
+          <li>Job photos and receipts</li>
+          <li>Payment collection</li>
+          <li>Driving directions to jobsite</li>
+        </ul>
+      </div>
+      <div class="trade-card">
+        <h4>Contractor</h4>
+        <ul>
+          <li>Project updates to clients</li>
+          <li>Contracts and NDAs</li>
+          <li>Invoice follow-ups</li>
+          <li>Lead screening</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">How It Works</h2>
+    <div class="old-way">
+      <strong>❌ Old way:</strong> Miss calls, lose leads, work nights catching up on follow-ups
+    </div>
+    <div class="new-way">
+      <strong>✓ New way:</strong> 1) Pick your plan. 2) Connect Telegram, Discord, Slack, or WhatsApp. 3) Launch in under 60 seconds.
+    </div>
   </section>
 
   <section>
     <h2 class="section-title">Tech Stack</h2>
     <div class="tech-stack">
-      <span class="tech-tag">Next.js</span>
-      <span class="tech-tag">TypeScript</span>
+      <span class="tech-tag">OpenClaw</span>
+      <span class="tech-tag">Next.js 14</span>
       <span class="tech-tag">Tailwind CSS</span>
-      <span class="tech-tag">Node.js</span>
-      <span class="tech-tag">OpenClaw Agents</span>
+      <span class="tech-tag">Managed Inference Gateway</span>
+      <span class="tech-tag">MCP Integrations</span>
       <span class="tech-tag">Vercel</span>
     </div>
   </section>
 
   <section>
-    <h2 class="section-title">Capabilities</h2>
+    <h2 class="section-title">Built On OpenClaw</h2>
+    <p class="highlight">"All the power of OpenClaw, none of the headaches."</p>
     <ul class="feature-list">
       <li>
         <div>
-          <strong>Scheduled Operations</strong><br>
-          Automated tasks running on cron — research agents, health checks, backup verification
+          <strong>Managed inference gateway</strong><br>
+          Enterprise-grade AI infrastructure, zero setup required
         </div>
       </li>
       <li>
         <div>
-          <strong>System Monitoring</strong><br>
-          Heartbeat system tracks uptime, resource usage, and alerts when things go wrong
+          <strong>Tool calling + MCP integrations</strong><br>
+          Connect to calendars, CRMs, payment systems, and communication channels
         </div>
       </li>
       <li>
         <div>
-          <strong>Multi-Project Coordination</strong><br>
-          Shared infrastructure across clawplex, fwpanthers, tylerdotai, and other projects
+          <strong>Built-in observability & tracing</strong><br>
+          Every call, every response — logged and searchable
         </div>
       </li>
       <li>
         <div>
-          <strong>Autonomous Decision Making</strong><br>
-          Agents that can assess situations and act without waiting for human input
+          <strong>Auto-restart, automatic updates</strong><br>
+          The agent stays running, stays current, stays sharp
         </div>
       </li>
     </ul>
   </section>
 
   <section>
-    <h2 class="section-title">How Agents Contribute</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>DevOps Agent</h3>
-        <p>Monitors deployments, manages hosting, handles Docker and infrastructure research</p>
-      </div>
-      <div class="card">
-        <h3>Ops Agent</h3>
-        <p>Tracks costs, vendor relationships, and operational reliability</p>
-      </div>
-      <div class="card">
-        <h3>Einstein Agent</h3>
-        <p>Runs deep research on AI tools, improvements, and industry trends</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2 class="section-title">Project Stats</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>5+ Agents</h3>
-        <p>Autonomous sub-agents handling operations</p>
-      </div>
-      <div class="card">
-        <h3>24/7</h3>
-        <p>Continuous monitoring and automation</p>
-      </div>
-      <div class="card">
-        <h3>Multi-Project</h3>
-        <p>Serving 4 active web properties</p>
-      </div>
-    </div>
+    <h2 class="section-title">Comparison</h2>
+    <table class="comparison-table">
+      <tr>
+        <th>Feature</th>
+        <th>Old Way</th>
+        <th>FortOS</th>
+      </tr>
+      <tr>
+        <td>Answer calls 24/7</td>
+        <td>❌ Missed after hours</td>
+        <td>✓ Always answers</td>
+      </tr>
+      <tr>
+        <td>Follow-up with leads</td>
+        <td>❌manual, inconsistent</td>
+        <td>✓ Automated, persistent</td>
+      </tr>
+      <tr>
+        <td>Book appointments</td>
+        <td>❌ Back-and-forth texts</td>
+        <td>✓ Direct calendar integration</td>
+      </tr>
+      <tr>
+        <td>Send quotes</td>
+        <td>❌ You write every one</td>
+        <td>✓ Templates + AI</td>
+      </tr>
+      <tr>
+        <td>Monthly cost</td>
+        <td>$3,000–8,000 (VA or receptionist)</td>
+        <td>$250 (everything included)</td>
+      </tr>
+    </table>
   </section>
 
   <div class="links">
     <a href="https://fort-os.com" class="link-btn">Live Site ↗</a>
     <a href="https://github.com/jedi-ops/fortOS" class="link-btn secondary">GitHub ↗</a>
   </div>
-
 </div>
 
 <footer>
-  <p>Flume SaaS Factory — <a href="https://fort-os.com" style="color: var(--accent);">fort-os.com</a></p>
+  <p>Powered by <a href="https://openclaw.ai" style="color: var(--accent);">OpenClaw</a> — Built in Fort Worth, TX</p>
 </footer>
 
 </body>
