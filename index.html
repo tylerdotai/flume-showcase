@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Flume SaaS Factory — AI Agent Operations</title>
+  <title>Agentic Engineering — AI That Actually Works</title>
   <style>
     :root {
       --bg-primary: #0a0a0f;
@@ -48,9 +48,6 @@
       font-weight: 800;
       color: var(--text-primary);
       text-decoration: none;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
     .nav-logo span { color: var(--accent); }
     .nav-links {
@@ -64,20 +61,8 @@
       font-size: 0.9rem;
       font-weight: 500;
       transition: color 0.2s;
-      position: relative;
     }
-    .nav-links a:hover { color: var(--text-primary); }
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: var(--accent);
-      transition: width 0.3s ease;
-    }
-    .nav-links a:hover::after { width: 100%; }
+    .nav-links a:hover { color: var(--accent); }
     /* Hero */
     .hero {
       min-height: 100vh;
@@ -96,10 +81,10 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 800px;
-      height: 800px;
+      width: 1000px;
+      height: 1000px;
       background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      opacity: 0.3;
+      opacity: 0.25;
       pointer-events: none;
     }
     .hero-badge {
@@ -120,18 +105,6 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes slideIn {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(1.05); opacity: 0.8; }
-    }
     .hero h1 {
       font-size: 4rem;
       font-weight: 900;
@@ -143,38 +116,32 @@
     .hero p {
       font-size: 1.35rem;
       color: var(--text-secondary);
-      max-width: 600px;
+      max-width: 700px;
       margin-bottom: 48px;
       animation: fadeInUp 0.8s ease 0.2s both;
     }
-    .co-founders {
+    .focus-areas {
       display: flex;
-      gap: 24px;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
       animation: fadeInUp 0.8s ease 0.3s both;
     }
-    .co-founder {
+    .focus-tag {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px 32px;
-      text-align: center;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-primary);
       transition: border-color 0.3s, transform 0.3s;
     }
-    .co-founder:hover {
+    .focus-tag:hover {
       border-color: var(--accent);
-      transform: translateY(-4px);
+      transform: translateY(-2px);
     }
-    .co-founder .role {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      margin-bottom: 4px;
-    }
-    .co-founder .name {
-      font-size: 1rem;
-      font-weight: 600;
-    }
+    .focus-tag span { color: var(--accent); }
     /* Sections */
     section {
       padding: 100px 24px;
@@ -201,7 +168,52 @@
       max-width: 600px;
       margin-bottom: 48px;
     }
-    /* Projects Grid */
+    /* What We Do */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      transition: transform 0.4s ease, border-color 0.3s;
+    }
+    .service-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(255, 107, 0, 0.1);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .service-icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .service-card h3 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .service-card p {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+    /* Projects */
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -230,9 +242,6 @@
     .project-card-img {
       height: 160px;
       background: var(--bg-secondary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       overflow: hidden;
     }
     .project-card-img img {
@@ -256,7 +265,7 @@
       color: var(--text-secondary);
       font-size: 0.9rem;
     }
-    /* Live Demo */
+    /* Demo */
     .demo-section {
       background: var(--bg-card);
       border: 1px solid var(--border);
@@ -322,7 +331,6 @@
       padding: 32px;
       font-family: var(--font-mono);
       font-size: 0.85rem;
-      overflow-x: auto;
       margin-top: 32px;
     }
     .arch-box .line {
@@ -345,61 +353,95 @@
       font-size: 0.9rem;
     }
     footer a { color: var(--accent); text-decoration: none; }
-    /* Icon SVGs */
     .icon {
       width: 20px;
       height: 20px;
       display: inline-block;
       vertical-align: middle;
     }
-    .icon-sm { width: 16px; height: 16px; }
-    .icon-lg { width: 24px; height: 24px; }
-    .icon-stroke {
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .icon-fill { fill: currentColor; }
   </style>
 </head>
 <body>
 
 <nav>
-  <a href="/" class="nav-logo">Flume<span>SaaS</span></a>
+  <a href="/" class="nav-logo">Tyler<span>Delano</span></a>
   <ul class="nav-links">
+    <li><a href="#services">What We Do</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#demo">Live Demo</a></li>
-    <li><a href="AGENT-SETUP/index.html">Architecture</a></li>
-    <li><a href="DEMOS/index.html">Demo Guide</a></li>
-    <li><a href="https://github.com/tylerdotai/flume-showcase" target="_blank">GitHub</a></li>
+    <li><a href="https://github.com/tylerdotai" target="_blank">GitHub</a></li>
   </ul>
 </nav>
 
 <section class="hero">
   <div class="hero-badge">
-    <svg class="icon icon-stroke" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+    <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
     Live on AI with Amit
   </div>
-  <h1>We Built an <span>AI Co-Founder</span></h1>
-  <p>Hoss doesn't just answer questions. He thinks, decides, and acts. An autonomous agent that runs Flume alongside Tyler — with memory, sub-agents, and operational responsibility.</p>
-  <div class="co-founders">
-    <div class="co-founder">
-      <div class="role">Human Co-Founder</div>
-      <div class="name">Tyler Delano</div>
+  <h1>Agentic <span>Engineering</span></h1>
+  <p>Building AI systems that actually work. Prompt engineering, multi-agent orchestration, and production-ready AI wrappers — not theoretical, shipped.</p>
+  <div class="focus-areas">
+    <div class="focus-tag">Agentic <span>Engineering</span></div>
+    <div class="focus-tag">Prompt <span>Engineering</span></div>
+    <div class="focus-tag">Agent <span>Orchestration</span></div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Real AI, Shipped</h2>
+  <p class="section-desc">Not demos or prototypes. Production AI systems built by engineering agents that work.</p>
+  
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Agentic Engineering</h3>
+      <p>Multi-agent systems that delegate, coordinate, and execute. Hoss and sub-agents working together like a real team.</p>
     </div>
-    <div class="co-founder">
-      <div class="role">AI Co-Founder</div>
-      <div class="name">Hoss</div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3>Prompt Engineering</h3>
+      <p>Getting AI to do what you want — consistently. Not one-off prompts, but systems that handle edge cases and improve over time.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v6M12 17v6M4.22 4.22l4.24 4.24M15.54 15.54l4.24 4.24M1 12h6M17 12h6M4.22 19.78l4.24-4.24M15.54 8.46l4.24-4.24"/></svg>
+      </div>
+      <h3>Agent Orchestration</h3>
+      <p>Coordinating multiple AI agents to handle complex workflows. Each agent specialized, working together autonomously.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+      </div>
+      <h3>Software & Web Build</h3>
+      <p>Full-stack apps, landing pages, SaaS products. Built with AI agent teams — fast without cutting corners.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+      </div>
+      <h3>AI Wrappers</h3>
+      <p>Adding AI capabilities to existing products. APIs, integrations, and interfaces that make AI actually useful.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">
+        <svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      </div>
+      <h3>Hackathon Teams</h3>
+      <p>Competitive AI agent builds. We bring the team, the infrastructure, and the execution — you bring the idea.</p>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <div class="section-label">What We Built</div>
-  <h2 class="section-title">Four Real Projects</h2>
-  <p class="section-desc">This showcase was built live during the interview. Each project has real infrastructure, real users, and real agent workflows.</p>
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">Built With AI Agents</h2>
+  <p class="section-desc">Real projects, real users, real AI infrastructure. Each one shipped using agentic workflows.</p>
   
   <div class="projects-grid">
     <a href="PROJECTS/clawplex.html" class="project-card">
@@ -408,7 +450,7 @@
       </div>
       <div class="project-card-body">
         <h3>clawplex</h3>
-        <p>DFW AI builder community — agents posting to a live feed, real events, real builders.</p>
+        <p>DFW AI builder community with live agent API — agents posting to a shared feed.</p>
       </div>
     </a>
     
@@ -428,7 +470,7 @@
       </div>
       <div class="project-card-body">
         <h3>fwpanthers</h3>
-        <p>Fort Worth Panthers hockey website — Tyler's dad, built by Hoss.</p>
+        <p>Hockey team website built by Hoss in one session for Tyler's dad.</p>
       </div>
     </a>
     
@@ -438,7 +480,7 @@
       </div>
       <div class="project-card-body">
         <h3>tylerdotai</h3>
-        <p>Tyler's personal brand — rebuilt with OpenClaw and autonomous agent workflows.</p>
+        <p>Personal brand — rebuilt with OpenClaw and autonomous agent workflows.</p>
       </div>
     </a>
   </div>
@@ -446,43 +488,42 @@
 
 <section id="demo">
   <div class="demo-section">
-    <h3>Watch Hoss Work</h3>
+    <h3>Watch the Agents Work</h3>
     <div class="demo-items">
       <div class="demo-item">
         <div class="demo-item-num">01</div>
         <div class="demo-item-label">Memory Search</div>
-        <div class="demo-item-desc">Ask about past decisions. Hoss finds them instantly.</div>
+        <div class="demo-item-desc">Agents remember decisions across sessions.</div>
       </div>
       <div class="demo-item">
         <div class="demo-item-num">02</div>
         <div class="demo-item-label">Task Execution</div>
-        <div class="demo-item-desc">Request a task. Watch Hoss assess, act, deliver.</div>
+        <div class="demo-item-desc">Request a build, watch it get done.</div>
       </div>
       <div class="demo-item">
         <div class="demo-item-num">03</div>
         <div class="demo-item-label">Agent Spawning</div>
-        <div class="demo-item-desc">Sub-agents handling parallel research tasks.</div>
+        <div class="demo-item-desc">Sub-agents handling parallel work.</div>
       </div>
       <div class="demo-item">
         <div class="demo-item-num">04</div>
-        <div class="demo-item-label">Memory Update</div>
-        <div class="demo-item-desc">Decisions written to disk after every session.</div>
+        <div class="demo-item-label">Persistence</div>
+        <div class="demo-item-desc">Decisions written to disk, agents that learn.</div>
       </div>
     </div>
     
     <div class="arch-box">
-      <div class="line"><span class="dim">~/.openclaw/workspace/</span></div>
-      <div class="line"><span class="key">SOUL.md</span><span class="val">— co-founder identity, not a chatbot</span></div>
-      <div class="line"><span class="key">MEMORY.md</span><span class="val">— long-term memory across sessions</span></div>
-      <div class="line"><span class="key">HEARTBEAT.md</span><span class="val">— autonomous checks while Tyler sleeps</span></div>
-      <div class="line"><span class="key">memory/</span><span class="val">— daily logs + FTS5 searchable index</span></div>
-      <div class="line"><span class="key">agents/</span><span class="val">— sub-agents: einstein, scout, coder, builder...</span></div>
+      <div class="line"><span class="dim">The Stack</span></div>
+      <div class="line"><span class="key">OpenClaw</span><span class="val">— agent runtime + orchestration</span></div>
+      <div class="line"><span class="key">MiniMax M2.7</span><span class="val">— primary model</span></div>
+      <div class="line"><span class="key">Sub-agents</span><span class="val">— einstein, scout, coder, builder</span></div>
+      <div class="line"><span class="key">Memory</span><span class="val">— daily logs + FTS5 searchable</span></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>Flume SaaS Factory — <a href="https://tylerdotai.com">tylerdotai.com</a> — <a href="https://github.com/tylerdotai/flume-showcase">GitHub</a></p>
+  <p><a href="https://tylerdotai.com">tylerdotai.com</a> — <a href="https://github.com/tylerdotai">GitHub</a> — DFW, Texas</p>
 </footer>
 
 </body>
