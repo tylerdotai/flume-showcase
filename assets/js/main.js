@@ -192,3 +192,32 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// Mobile nav hamburger
+document.addEventListener('DOMContentLoaded', function() {
+  const toggle = document.getElementById('navToggle');
+  const nav = document.querySelector('.nav-links');
+  
+  if (toggle && nav) {
+    toggle.addEventListener('click', function() {
+      toggle.classList.toggle('active');
+      nav.classList.toggle('open');
+    });
+    
+    // Close on link click
+    nav.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        toggle.classList.remove('active');
+        nav.classList.remove('open');
+      });
+    });
+    
+    // Close on outside click
+    document.addEventListener('click', function(e) {
+      if (!toggle.contains(e.target) && !nav.contains(e.target)) {
+        toggle.classList.remove('active');
+        nav.classList.remove('open');
+      }
+    });
+  }
+});

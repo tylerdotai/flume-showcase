@@ -183,3 +183,87 @@ footer a:hover { color: var(--accent); }
   .nav-links a { font-size: 0.8rem; }
   footer { padding: 40px 24px; }
 }
+
+/* Mobile Nav - Hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  z-index: 200;
+}
+.nav-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--text-primary);
+  transition: all 0.3s ease;
+}
+.nav-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.nav-toggle.active span:nth-child(2) { opacity: 0; }
+.nav-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--bg-secondary);
+    flex-direction: column;
+    gap: 0;
+    padding: 80px 24px 24px;
+    border-left: 1px solid var(--border);
+    transition: right 0.3s ease;
+    z-index: 150;
+  }
+  .nav-links.open { right: 0; }
+  .nav-links li { border-bottom: 1px solid var(--border); }
+  .nav-links a {
+    display: block;
+    padding: 16px 0;
+    font-size: 1rem;
+  }
+  
+  /* Mobile hero */
+  .hero { padding: 60px 24px !important; grid-template-columns: 1fr !important; gap: 40px !important; }
+  .hero-pics { justify-self: center; }
+  .hero-title { font-size: 2.5rem !important; }
+  
+  /* Mobile stats */
+  .stats { padding: 32px 24px !important; }
+  .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 16px !important; }
+  .stat-num { font-size: 1.8rem !important; }
+  
+  /* Mobile sections */
+  .section { padding: 48px 24px !important; }
+  .section-title { font-size: 1.4rem !important; }
+  .services-grid { grid-template-columns: 1fr !important; }
+  .projects-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 12px !important; }
+  
+  /* Mobile images in cards */
+  .project-card img { aspect-ratio: 4/3 !important; }
+  .project-card-body h3 { font-size: 0.85rem !important; }
+  .project-card-body p { font-size: 0.75rem !important; }
+  
+  /* Pillars mobile */
+  .pillars-section { padding: 48px 24px !important; }
+  .pillars-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+  
+  /* About page mobile */
+  .page-wrap { padding: 100px 24px 48px !important; }
+  .page-title { font-size: 2rem !important; }
+  
+  /* Contact mobile */
+  .contact-grid { grid-template-columns: 1fr !important; }
+  
+  /* SOP mobile */
+  .agent-grid { grid-template-columns: 1fr !important; }
+  .flow-box { flex-direction: column !important; align-items: flex-start !important; }
+  
+  /* COMMUNITY mobile */
+  .event-card, .channel-item { flex-direction: column !important; gap: 8px !important; }
+}
