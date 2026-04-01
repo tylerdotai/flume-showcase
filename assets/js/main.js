@@ -93,7 +93,7 @@ function initActiveNav() {
 /* ---------- Reveal Animations ---------- */
 function initRevealAnimations() {
   const reveals = document.querySelectorAll('.reveal, .reveal-scale, .reveal-left, .reveal-right');
-  if (!reveals.length) return;
+  const staggers = document.querySelectorAll('.stagger');
   
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -105,6 +105,7 @@ function initRevealAnimations() {
   }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
   
   reveals.forEach(el => observer.observe(el));
+  staggers.forEach(el => observer.observe(el));
 }
 
 /* ---------- 3D Tilt Cards ---------- */
