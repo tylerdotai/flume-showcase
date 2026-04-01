@@ -22,14 +22,14 @@
       --text-secondary: #888;
       --text-muted: #555;
       --border: #2a2a30;
-      --font-display: 'Space Grotesk', sans-serif;
-      --font-editorial: 'Newsreader', serif;
+      --font-display: 'Inter', sans-serif;
+      --font-editorial: 'Inter', sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: var(--font-display);
+      background: #0d0d0f;
+      color: #f5f5f5;
+      font-family: 'Inter', sans-serif;
       line-height: 1.6;
     }
     nav {
@@ -39,17 +39,17 @@
       right: 0;
       z-index: 100;
       background: rgba(13, 13, 15, 0.95);
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid #2a2a30;
       padding: 0 48px;
       height: 64px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
-    .nav-logo { font-size: 1rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
+    .nav-logo { font-size: 1rem; font-weight: 700; color: #f5f5f5; text-decoration: none; }
     .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
+    .nav-links a { color: #9a9aa0; text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #ff6b00; }
 
     .page-wrap {
       max-width: 900px;
@@ -59,14 +59,14 @@
     .page-title {
       font-size: 3rem;
       font-weight: 700;
-      font-family: var(--font-editorial);
+      font-family: 'Inter', sans-serif;
       font-style: italic;
       margin-bottom: 16px;
       letter-spacing: -0.02em;
     }
     .page-subtitle {
       font-size: 1.1rem;
-      color: var(--text-secondary);
+      color: #9a9aa0;
       margin-bottom: 48px;
       max-width: 600px;
     }
@@ -78,12 +78,12 @@
       gap: 12px;
       margin-bottom: 24px;
       padding-bottom: 16px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid #2a2a30;
     }
     .section-num {
       font-size: 0.7rem;
       font-weight: 700;
-      color: var(--accent);
+      color: #ff6b00;
       background: rgba(255, 107, 0, 0.1);
       padding: 4px 10px;
       text-transform: uppercase;
@@ -92,32 +92,32 @@
     .section h2 {
       font-size: 1.5rem;
       font-weight: 700;
-      color: var(--text-primary);
+      color: #f5f5f5;
     }
 
     .narrative {
-      font-family: var(--font-editorial);
+      font-family: 'Inter', sans-serif;
       font-size: 1.15rem;
-      color: var(--text-secondary);
+      color: #9a9aa0;
       line-height: 1.8;
       margin-bottom: 32px;
     }
-    .narrative strong { color: var(--text-primary); font-weight: 600; }
-    .narrative em { color: var(--accent); font-style: normal; }
+    .narrative strong { color: #f5f5f5; font-weight: 600; }
+    .narrative em { color: #ff6b00; font-style: normal; }
 
     .callout {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-left: 4px solid var(--accent);
+      background: #1a1a20;
+      border: 1px solid #2a2a30;
+      border-left: 4px solid #ff6b00;
       padding: 24px;
       margin: 32px 0;
     }
-    .callout p { color: var(--text-secondary); font-size: 1rem; line-height: 1.7; }
+    .callout p { color: #9a9aa0; font-size: 1rem; line-height: 1.7; }
     .callout cite {
       display: block;
       margin-top: 12px;
       font-size: 0.85rem;
-      color: var(--text-muted);
+      color: #5a5a62;
       font-style: normal;
     }
 
@@ -129,15 +129,21 @@
       margin: 32px 0;
     }
     .agent-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: #1a1a20;
+      border: 1px solid #2a2a30;
       padding: 24px;
+      transition: all 0.3s ease;
+    }
+    .agent-card:hover {
+      border-color: #ff6b00;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(255,107,0,0.15);
     }
     .agent-card .role {
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--accent);
+      color: #ff6b00;
       margin-bottom: 8px;
       font-weight: 600;
     }
@@ -146,24 +152,29 @@
       font-weight: 700;
       margin-bottom: 8px;
     }
-    .agent-card p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.6; }
-    .agent-card.primary { border-color: var(--accent); }
-    .agent-card.primary h3 { color: var(--accent); }
+    .agent-card p { font-size: 0.9rem; color: #5a5a62; line-height: 1.6; }
+    .agent-card.primary { border-color: #ff6b00; }
+    .agent-card.primary h3 { color: #ff6b00; }
 
     /* Flow diagram */
     .flow-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
+      background: #1a1a20;
+      border: 1px solid #2a2a30;
       padding: 20px 24px;
       margin: 16px 0;
       display: flex;
       align-items: center;
       gap: 16px;
+      transition: all 0.3s ease;
+    }
+    .flow-box:hover {
+      border-color: #ff6b00;
+      transform: translateX(8px);
     }
     .flow-num {
       width: 32px;
       height: 32px;
-      background: var(--accent);
+      background: #ff6b00;
       color: #000;
       display: flex;
       align-items: center;
@@ -173,7 +184,7 @@
       flex-shrink: 0;
     }
     .flow-content h4 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
-    .flow-content p { font-size: 0.9rem; color: var(--text-muted); }
+    .flow-content p { font-size: 0.9rem; color: #5a5a62; }
 
     /* SOP table */
     .sop-table {
@@ -186,18 +197,22 @@
       font-size: 0.7rem;
       text-transform: uppercase;
       letter-spacing: 0.1em;
-      color: var(--text-muted);
+      color: #5a5a62;
       padding: 12px 16px;
-      border-bottom: 2px solid var(--border);
+      border-bottom: 2px solid #2a2a30;
     }
     .sop-table td {
       padding: 16px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid #2a2a30;
       font-size: 0.95rem;
-      color: var(--text-secondary);
+      color: #9a9aa0;
       vertical-align: top;
+      transition: background 0.2s;
     }
-    .sop-table td:first-child { color: var(--text-primary); font-weight: 600; width: 180px; }
+    .sop-table tr:hover td {
+      background: rgba(255,107,0,0.05);
+    }
+    .sop-table td:first-child { color: #f5f5f5; font-weight: 600; width: 180px; }
     .sop-table tr:last-child td { border-bottom: none; }
 
     .tag {
@@ -205,17 +220,17 @@
       font-size: 0.7rem;
       padding: 2px 8px;
       background: rgba(255,107,0,0.1);
-      color: var(--accent);
+      color: #ff6b00;
       margin-right: 4px;
     }
-    .tag.green { background: rgba(34,197,94,0.1); color: var(--accent-green); }
-    .tag.blue { background: rgba(59,158,255,0.1); color: var(--accent-cool); }
-    .tag.purple { background: rgba(168,85,247,0.1); color: var(--accent-purple); }
+    .tag.green { background: rgba(34,197,94,0.1); color: #1ed66d; }
+    .tag.blue { background: rgba(59,158,255,0.1); color: #4d9fff; }
+    .tag.purple { background: rgba(168,85,247,0.1); color: #a855f7; }
 
-    footer { padding: 60px 48px; border-top: 1px solid var(--border); text-align: center; }
-    footer p { color: var(--text-muted); font-size: 0.9rem; }
-    footer a { color: var(--accent-cool); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
+    footer { padding: 60px 48px; border-top: 1px solid #2a2a30; text-align: center; }
+    footer p { color: #5a5a62; font-size: 0.9rem; }
+    footer a { color: #4d9fff; text-decoration: none; }
+    footer a:hover { color: #ff6b00; }
 
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
@@ -244,11 +259,11 @@
 
 <div class="page-wrap">
 
-  <h1 class="page-title">How We Work</h1>
+  <h1 class="page-title reveal">How We Work</h1>
   <p class="page-subtitle">The whitepaper, SOP, and narrative for Tyler Delano's agent team — how one person orchestrates a team of agents to build real things.</p>
 
   <!-- Section 1: Philosophy -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">01</span>
       <h2>Philosophy</h2>
@@ -269,7 +284,7 @@
   </div>
 
   <!-- Section 2: The Team -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">02</span>
       <h2>The Team</h2>
@@ -281,12 +296,12 @@
         <h3>Tyler Delano</h3>
         <p>The conductor. Makes decisions, sets direction, works the day job, builds at night. Runs 16-18 hours a day. Has skin in the game.</p>
       </div>
-      <div class="agent-card">
+      <div class="agent-card reveal">
         <div class="role">AI Co-Founder</div>
         <h3>Hoss</h3>
         <p>Primary agent. Reads memory files, maintains context, coordinates sub-agents, executes tasks, pushes back when Tyler's wrong. Lives in the workspace.</p>
       </div>
-      <div class="agent-card">
+      <div class="agent-card reveal">
         <div class="role">Specialists</div>
         <h3>13 Sub-Agents</h3>
         <p>Builder, Coder, Devops, Einstein, Marketer, Scout, Eval-Middleware, Commit-Scanner, PR-Inspector, Release-Herald, Webhook-Processor, Issue-Triage. On-demand execution.</p>
@@ -301,41 +316,41 @@
   </div>
 
   <!-- Section 3: The SOP -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">03</span>
       <h2>The SOP — How Tasks Flow</h2>
     </div>
 
-    <div class="flow-box">
+    <div class="flow-box reveal">
       <div class="flow-num">1</div>
       <div class="flow-content">
         <h4>Tyler identifies a task</h4>
         <p>Could be anything — build a website, research competitors, write an email, fix a bug, create a plan.</p>
       </div>
     </div>
-    <div class="flow-box">
+    <div class="flow-box reveal">
       <div class="flow-num">2</div>
       <div class="flow-content">
         <h4>Hoss receives the task</h4>
         <p>Reads memory, assesses scope, determines if sub-agents are needed. If yes, spawns them. If no, handles it directly.</p>
       </div>
     </div>
-    <div class="flow-box">
+    <div class="flow-box reveal">
       <div class="flow-num">3</div>
       <div class="flow-content">
         <h4>Sub-agents execute in parallel</h4>
         <p>Builder might build a frontend while Scout researches competitors while Einstein runs a digest. All on cron, all independent.</p>
       </div>
     </div>
-    <div class="flow-box">
+    <div class="flow-box reveal">
       <div class="flow-num">4</div>
       <div class="flow-content">
         <h4>Hoss synthesizes results</h4>
         <p>Sub-agents return their output. Hoss integrates it, updates memory, and delivers a coherent result to Tyler.</p>
       </div>
     </div>
-    <div class="flow-box">
+    <div class="flow-box reveal">
       <div class="flow-num">5</div>
       <div class="flow-content">
         <h4>Tyler makes decisions</h4>
@@ -345,7 +360,7 @@
   </div>
 
   <!-- Section 4: Agent Roles -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">04</span>
       <h2>Agent Roles & Responsibilities</h2>
@@ -466,7 +481,7 @@
   </div>
 
   <!-- Section 5: Memory System -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">05</span>
       <h2>The Memory System</h2>
@@ -525,7 +540,7 @@
   </div>
 
   <!-- Section 6: The Coordination Protocol -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">06</span>
       <h2>Coordination Protocol</h2>
@@ -572,7 +587,7 @@
   </div>
 
   <!-- Section 7: Why This Works -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">07</span>
       <h2>Why This Works</h2>
@@ -593,7 +608,7 @@
   </div>
 
   <!-- Section 8: The Stack -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">08</span>
       <h2>The Stack — Tools We Use</h2>
@@ -624,7 +639,7 @@
   </div>
 
   <!-- Section 9: Skills -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">09</span>
       <h2>The Skills — How We Use Them</h2>

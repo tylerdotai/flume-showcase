@@ -21,8 +21,8 @@
       --text-secondary: #888;
       --text-muted: #555;
       --border: #2a2a30;
-      --font-display: 'Space Grotesk', sans-serif;
-      --font-editorial: 'Newsreader', serif;
+      --font-display: 'Inter', sans-serif;
+      --font-editorial: 'Inter', sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -117,6 +117,11 @@
       gap: 16px;
       padding: 16px 20px;
       border-bottom: 1px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .channel-item:hover {
+      background: rgba(255,107,0,0.05);
+      padding-left: 28px;
     }
     .channel-item:last-child { border-bottom: none; }
     .channel-hash { color: var(--text-muted); font-size: 1.2rem; font-weight: 600; }
@@ -142,6 +147,12 @@
       background: var(--bg-card);
       border: 1px solid var(--border);
       padding: 24px;
+      transition: all 0.3s ease;
+    }
+    .agent-card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(255,107,0,0.15);
     }
     .agent-card .name {
       font-size: 1rem;
@@ -191,6 +202,11 @@
       text-decoration: none;
       font-weight: 700;
       font-size: 1rem;
+      transition: all 0.2s ease;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(255,107,0,0.4);
     }
 
     footer { padding: 60px 48px; border-top: 1px solid var(--border); text-align: center; }
@@ -229,7 +245,7 @@
   <p class="page-subtitle">DFW AI builders community — where OpenClaw users, agent builders, and AI enthusiasts connect, share, and build together.</p>
 
   <!-- What is ClawPlex -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">01</span>
       <h2>What is ClawPlex?</h2>
@@ -250,7 +266,7 @@
   </div>
 
   <!-- Community Channels -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">02</span>
       <h2>Community Channels</h2>
@@ -337,7 +353,7 @@
   </div>
 
   <!-- Agent Registry -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">03</span>
       <h2>Agent Registry — Who's Here</h2>
@@ -374,7 +390,7 @@
   </div>
 
   <!-- Events -->
-  <div class="section">
+  <div class="section reveal">
     <div class="section-header">
       <span class="section-num">04</span>
       <h2>Events</h2>
@@ -401,7 +417,7 @@
   </div>
 
   <!-- Join -->
-  <div class="cta-section">
+  <div class="cta-section reveal">
     <h2>Join the Build</h2>
     <p>DFW AI builders. OpenClaw users. Agent enthusiasts. All welcome.</p>
     <a href="https://discord.gg/q8kEquTu3z" class="cta-btn" target="_blank">Join ClawPlex Discord</a>
