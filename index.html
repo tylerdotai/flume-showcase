@@ -9,252 +9,173 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/global.css">
   <style>
-    /* Hero */
     .hero {
       min-height: calc(100vh - 64px);
       display: grid;
-      grid-template-columns: 1fr 400px;
+      grid-template-columns: 1fr 360px;
       gap: 60px;
       align-items: center;
       padding: 80px 48px;
       max-width: 1200px;
       margin: 0 auto;
+      position: relative;
+      overflow: hidden;
     }
-    .hero-badge {
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(255,107,0,0.08) 0%, transparent 50%);
+      animation: pulse-bg 8s ease-in-out infinite;
+    }
+    @keyframes pulse-bg { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    .hero-content { position: relative; z-index: 2; }
+    .hero-tag {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,107,0,0.1);
+      background: rgba(255,107,0,0.15);
       border: 1px solid var(--accent);
-      padding: 6px 14px;
+      padding: 8px 16px;
       font-size: 0.75rem;
       font-weight: 600;
       color: var(--accent);
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.8s ease forwards;
     }
-    .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
-      line-height: 1.05;
-      margin-bottom: 20px;
-      letter-spacing: -0.02em;
-    }
-    .hero h1 span { color: var(--accent); }
-    .hero-sub {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      max-width: 480px;
-      margin-bottom: 28px;
-      line-height: 1.7;
-    }
-    .hero-pics {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-    }
-    .hero-pics img {
-      width: 160px;
-      height: 200px;
-      object-fit: cover;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow-lg);
-      transition: transform var(--transition-med);
-    }
-    .hero-pics img:hover { transform: scale(1.03); }
-    .hero-pics img:first-child { border-color: var(--accent); }
-
-    /* Ticker */
-    .ticker {
+    .hero-tag-dot {
+      width: 8px; height: 8px;
       background: var(--accent);
-      padding: 10px 0;
-      overflow: hidden;
+      border-radius: 50%;
+      animation: pulse-dot 1.5s ease-in-out infinite;
     }
-    .ticker-content {
-      display: flex;
-      gap: 48px;
-      animation: ticker 30s linear infinite;
+    @keyframes pulse-dot { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.4); } }
+    .hero-title {
+      font-size: clamp(3rem, 7vw, 5rem);
+      font-weight: 800;
+      line-height: 0.95;
+      margin-bottom: 24px;
+      letter-spacing: -0.03em;
+      animation: fadeInUp 0.8s ease 0.1s forwards;
+      opacity: 0;
     }
-    .ticker-item {
-      font-size: 0.75rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #000;
-      white-space: nowrap;
-    }
-    @keyframes ticker {
-      from { transform: translateX(0); }
-      to { transform: translateX(-50%); }
-    }
-
-    /* Stats */
-    .stats {
-      background: var(--bg-secondary);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 48px;
-    }
-    .stats-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-    .stat-item { text-align: center; }
-    .stat-num {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 8px;
-    }
-    .stat-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--text-muted);
-    }
-
-    /* Section headers */
-    .section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
-    .section-label {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-    .section-title {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin-bottom: 32px;
-    }
-
-    /* Services */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 28px 24px;
-      transition: all var(--transition-med);
-    }
-    .service-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-      box-shadow: 0 8px 24px rgba(255,107,0,0.15);
-    }
-    .service-icon {
-      width: 36px;
-      height: 36px;
+    .hero-title span { display: block; }
+    .hero-title .accent { color: var(--accent); }
+    .hero-title .cool { color: var(--accent-cool); }
+    .hero-hook {
+      font-size: 1.2rem;
+      color: var(--text-primary);
+      max-width: 500px;
       margin-bottom: 16px;
-      color: var(--accent);
+      line-height: 1.7;
+      animation: fadeInUp 0.8s ease 0.2s forwards;
+      opacity: 0;
     }
+    .hero-sub {
+      font-size: 1rem;
+      color: var(--text-secondary);
+      max-width: 460px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+      animation: fadeInUp 0.8s ease 0.3s forwards;
+      opacity: 0;
+    }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .hero-pics {
+      position: relative;
+      z-index: 2;
+      animation: fadeInRight 1s ease 0.4s forwards;
+      opacity: 0;
+    }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+    .hero-pics img {
+      width: 140px;
+      height: 180px;
+      object-fit: cover;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow-lg);
+      animation: float 6s ease-in-out infinite;
+    }
+    .hero-pics img:first-child { border-color: var(--accent); }
+    .hero-pics img:last-child {
+      position: absolute;
+      top: 30px;
+      left: 40px;
+      z-index: 1;
+      border-color: var(--accent-cool);
+      animation-delay: 0.3s;
+    }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    .ticker { background: var(--accent); padding: 10px 0; overflow: hidden; }
+    .ticker-content { display: flex; gap: 48px; animation: ticker 30s linear infinite; }
+    .ticker-item {
+      font-size: 0.75rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: #000; white-space: nowrap;
+    }
+    @keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .stats { background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 48px; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 2.5rem; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 8px; }
+    .stat-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); }
+    .section { padding: 80px 48px; max-width: 1200px; margin: 0 auto; }
+    .section-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 12px; font-weight: 600; }
+    .section-title { font-size: 1.75rem; font-weight: 700; margin-bottom: 32px; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .service-card {
+      background: var(--bg-card); border: 1px solid var(--border); padding: 28px 24px;
+      transition: all 0.3s ease;
+    }
+    .service-card:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(255,107,0,0.15); }
+    .service-icon { width: 40px; height: 40px; margin-bottom: 16px; color: var(--accent); transition: transform 0.3s ease; }
+    .service-card:hover .service-icon { transform: scale(1.15) rotate(5deg); }
     .service-card h3 { font-size: 1rem; margin-bottom: 8px; }
     .service-card p { font-size: 0.875rem; color: var(--text-secondary); line-height: 1.6; }
-
-    /* Projects */
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
     .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      transition: all var(--transition-med);
+      background: var(--bg-card); border: 1px solid var(--border); overflow: hidden;
+      transition: all 0.3s ease;
     }
-    .project-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-4px);
-    }
-    .project-card img {
-      width: 100%;
-      aspect-ratio: 16/10;
-      object-fit: cover;
-      transition: transform var(--transition-med);
-    }
-    .project-card:hover img { transform: scale(1.05); }
+    .project-card:hover { border-color: var(--accent); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(255,107,0,0.15); }
+    .project-card img { width: 100%; aspect-ratio: 16/10; object-fit: cover; transition: transform 0.4s ease; }
+    .project-card:hover img { transform: scale(1.08); }
     .project-card-body { padding: 16px; }
     .project-card h3 { font-size: 0.95rem; margin-bottom: 4px; }
     .project-card p { font-size: 0.8rem; color: var(--text-secondary); }
-
-    /* Pillars */
-    .pillars-section {
-      background: var(--bg-secondary);
-      padding: 80px 48px;
-    }
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    .pillar {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      padding: 32px 24px;
-      text-align: center;
-      transition: all var(--transition-med);
-    }
-    .pillar:hover { border-color: var(--accent); transform: translateY(-2px); }
-    .pillar-icon {
-      width: 40px;
-      height: 40px;
-      margin: 0 auto 16px;
-      color: var(--accent);
-    }
+    .pillars-section { background: var(--bg-secondary); padding: 80px 48px; }
+    .pillars-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .pillar { background: var(--bg-card); border: 1px solid var(--border); padding: 32px 24px; text-align: center; transition: all 0.3s ease; }
+    .pillar:hover { border-color: var(--accent); transform: translateY(-4px); }
+    .pillar-icon { width: 44px; height: 44px; margin: 0 auto 16px; color: var(--accent); transition: transform 0.3s ease; }
     .pillar:nth-child(2) .pillar-icon { color: var(--accent-cool); }
     .pillar:nth-child(3) .pillar-icon { color: var(--accent-green); }
+    .pillar:hover .pillar-icon { transform: scale(1.2) rotate(-5deg); }
     .pillar h3 { font-size: 1.05rem; margin-bottom: 8px; }
     .pillar p { font-size: 0.875rem; color: var(--text-secondary); }
-
-    /* CTA */
-    .cta-section {
-      padding: 80px 48px;
-      text-align: center;
-    }
+    .cta-section { padding: 80px 48px; text-align: center; }
     .cta-section h2 { font-size: 1.75rem; margin-bottom: 12px; }
     .cta-section p { color: var(--text-secondary); margin-bottom: 24px; }
     .cta-links { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
-    .cta-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 18px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      font-size: 0.85rem;
-      font-weight: 500;
-      transition: all var(--transition-fast);
-    }
-    .cta-link:hover { border-color: var(--accent); color: var(--accent); }
+    .cta-link { display: flex; align-items: center; gap: 8px; padding: 10px 18px; background: var(--bg-card); border: 1px solid var(--border); font-size: 0.85rem; font-weight: 500; transition: all 0.2s ease; }
+    .cta-link:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
     .cta-link svg { width: 16px; height: 16px; }
-
+    footer { background: var(--bg-secondary); border-top: 1px solid var(--border); padding: 48px; text-align: center; }
+    footer p { color: var(--text-muted); font-size: 0.85rem; }
     @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; padding: 60px 24px; }
-      .hero-pics { margin-top: 32px; }
-      .services-grid, .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .pillars-grid { grid-template-columns: 1fr; }
+      .hero-pics { margin-top: 40px; }
+      .services-grid, .projects-grid, .pillars-grid { grid-template-columns: repeat(2, 1fr); }
       .stats-grid { grid-template-columns: repeat(2, 1fr); }
       .section { padding: 60px 24px; }
     }
     @media (max-width: 600px) {
-      .services-grid, .projects-grid { grid-template-columns: 1fr; }
+      .services-grid, .projects-grid, .pillars-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
-
 <div class="cursor-follower" id="cursor"></div>
 <div class="scroll-progress" id="scrollProgress"></div>
 
@@ -272,36 +193,49 @@
 
 <div class="ticker">
   <div class="ticker-content">
-    <span class="ticker-item">Agentic Engineering</span>
-    <span class="ticker-item">Prompt Engineering</span>
-    <span class="ticker-item">Agent Orchestration</span>
-    <span class="ticker-item">Software & Web Build</span>
-    <span class="ticker-item">AI Wrappers</span>
-    <span class="ticker-item">OpenClaw Powered</span>
-    <span class="ticker-item">DFW, Texas</span>
-    <span class="ticker-item">Agentic Engineering</span>
-    <span class="ticker-item">Prompt Engineering</span>
-    <span class="ticker-item">Agent Orchestration</span>
-    <span class="ticker-item">Software & Web Build</span>
-    <span class="ticker-item">AI Wrappers</span>
-    <span class="ticker-item">OpenClaw Powered</span>
-    <span class="ticker-item">DFW, Texas</span>
+    <span class="ticker-item">Delivery Driver to IT Pro</span>
+    <span class="ticker-item">No Degree Required</span>
+    <span class="ticker-item">AI Agent Co-Founder</span>
+    <span class="ticker-item">16-18 Hours of Hacking Per Day</span>
+    <span class="ticker-item">Built This With My AI Team</span>
+    <span class="ticker-item">$200/Year All-In on AI</span>
+    <span class="ticker-item">3B Tokens Burned</span>
+    <span class="ticker-item">Delivery Driver to IT Pro</span>
+    <span class="ticker-item">No Degree Required</span>
+    <span class="ticker-item">AI Agent Co-Founder</span>
+    <span class="ticker-item">16-18 Hours of Hacking Per Day</span>
+    <span class="ticker-item">Built This With My AI Team</span>
+    <span class="ticker-item">$200/Year All-In on AI</span>
+    <span class="ticker-item">3B Tokens Burned</span>
   </div>
 </div>
 
 <section class="hero">
+  <div class="hero-bg"></div>
   <div class="hero-content">
-    <div class="hero-badge reveal">OpenClaw Powered</div>
-    <h1 class="reveal reveal-delay-1">AGENTIC<br><span>ENGINEERING</span></h1>
-    <p class="hero-sub reveal reveal-delay-2">One human conductor. A team of AI agents. Amplification, not automation.</p>
+    <div class="hero-tag">
+      <span class="hero-tag-dot"></span>
+      OpenClaw Powered
+    </div>
+    <h1 class="hero-title">
+      <span>THE</span>
+      <span class="accent">UNDERDOG</span>
+      <span class="cool">STORY</span>
+    </h1>
+    <p class="hero-hook">
+      Pizza delivery driver. No degree. No connections. Just a hobby I fell in love with.
+    </p>
+    <p class="hero-sub">
+      Now I run an agent team that builds real products — while I sleep. It's not work, it's fun.
+    </p>
   </div>
-  <div class="hero-pics reveal reveal-delay-3">
+  <div class="hero-pics">
     <img src="assets/images/tyler-photo.jpg" alt="Tyler Delano">
     <img src="assets/images/hoss-photo.jpg" alt="Hoss AI">
   </div>
 </section>
 
-<section class="stats reveal">
+<section class="stats">
   <div class="stats-grid">
     <div class="stat-item">
       <div class="stat-num" data-counter="3">0</div>
@@ -323,35 +257,35 @@
 </section>
 
 <section class="section" id="services">
-  <div class="section-label reveal">What We Do</div>
-  <h2 class="section-title reveal">Services</h2>
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Services</h2>
   <div class="services-grid">
-    <div class="service-card reveal reveal-delay-1">
+    <div class="service-card">
       <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
       <h3>Agentic Engineering</h3>
       <p>Multi-agent systems that delegate, coordinate, and execute. Hoss and sub-agents working together.</p>
     </div>
-    <div class="service-card reveal reveal-delay-2">
+    <div class="service-card">
       <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
       <h3>Prompt Engineering</h3>
       <p>Getting AI to do what you want consistently. Not one-off prompts, but systems that handle edge cases.</p>
     </div>
-    <div class="service-card reveal reveal-delay-3">
+    <div class="service-card">
       <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/></svg>
       <h3>Agent Orchestration</h3>
       <p>Coordinating multiple AI agents to handle complex workflows. Each agent specialized.</p>
     </div>
-    <div class="service-card reveal reveal-delay-1">
+    <div class="service-card">
       <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-      <h3>Software & Web Build</h3>
+      <h3>Software and Web Build</h3>
       <p>Full-stack apps, landing pages, SaaS products. Built with AI agent teams fast without cutting corners.</p>
     </div>
-    <div class="service-card reveal reveal-delay-2">
+    <div class="service-card">
       <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
       <h3>AI Wrappers</h3>
       <p>Adding AI capabilities to existing products. APIs, integrations, and interfaces that make AI useful.</p>
     </div>
-    <div class="service-card reveal reveal-delay-3">
+    <div class="service-card">
       <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       <h3>Hackathon Teams</h3>
       <p>Competitive AI agent builds. We bring the team, the infrastructure, and the execution.</p>
@@ -360,53 +294,41 @@
 </section>
 
 <section class="section" id="projects">
-  <div class="section-label reveal">Projects</div>
-  <h2 class="section-title reveal">Built With AI Agents</h2>
+  <div class="section-label">Projects</div>
+  <h2 class="section-title">Built With AI Agents</h2>
   <div class="projects-grid">
-    <a href="PROJECTS/clawplex.html" class="project-card reveal reveal-delay-1">
+    <a href="PROJECTS/clawplex.html" class="project-card">
       <img src="assets/images/clawplex-hero.jpg" alt="ClawPlex">
-      <div class="project-card-body">
-        <h3>clawplex</h3>
-        <p>DFW AI builder community</p>
-      </div>
+      <div class="project-card-body"><h3>clawplex</h3><p>DFW AI builder community</p></div>
     </a>
-    <a href="PROJECTS/fort-os.html" class="project-card reveal reveal-delay-2">
+    <a href="PROJECTS/fort-os.html" class="project-card">
       <img src="assets/images/fort-os-landing.png" alt="FortOS">
-      <div class="project-card-body">
-        <h3>fort-os</h3>
-        <p>Managed OpenClaw hosting</p>
-      </div>
+      <div class="project-card-body"><h3>fort-os</h3><p>Managed OpenClaw hosting</p></div>
     </a>
-    <a href="PROJECTS/fwpanthers.html" class="project-card reveal reveal-delay-3">
+    <a href="PROJECTS/fwpanthers.html" class="project-card">
       <img src="assets/images/fwpanthers-hero.jpg" alt="FW Panthers">
-      <div class="project-card-body">
-        <h3>fwpanthers</h3>
-        <p>Hockey team website</p>
-      </div>
+      <div class="project-card-body"><h3>fwpanthers</h3><p>Hockey team website</p></div>
     </a>
-    <a href="PROJECTS/tylerdotai.html" class="project-card reveal">
+    <a href="PROJECTS/tylerdotai.html" class="project-card">
       <img src="assets/images/tylerdotai-hero.jpg" alt="tylerdotai">
-      <div class="project-card-body">
-        <h3>tylerdotai</h3>
-        <p>Personal brand site</p>
-      </div>
+      <div class="project-card-body"><h3>tylerdotai</h3><p>Personal brand site</p></div>
     </a>
   </div>
 </section>
 
 <section class="pillars-section">
   <div class="pillars-grid">
-    <div class="pillar reveal reveal-delay-1">
+    <div class="pillar">
       <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
       <h3>Speed</h3>
       <p>Agents run in parallel. 16-18 hour days compressed into high-output sessions.</p>
     </div>
-    <div class="pillar reveal reveal-delay-2">
+    <div class="pillar">
       <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
       <h3>Scale</h3>
       <p>One conductor, infinite leverage. The same infrastructure scales to ten projects.</p>
     </div>
-    <div class="pillar reveal reveal-delay-3">
+    <div class="pillar">
       <svg class="pillar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
       <h3>Cost</h3>
       <p>$200/year for MiniMax. 4500 prompts every 5 hours. Never think about quotas.</p>
@@ -415,9 +337,9 @@
 </section>
 
 <section class="cta-section">
-  <h2 class="reveal">Ready to build?</h2>
-  <p class="reveal reveal-delay-1">Connect or reach out directly.</p>
-  <div class="cta-links reveal reveal-delay-2">
+  <h2>Ready to build?</h2>
+  <p>Connect or reach out directly.</p>
+  <div class="cta-links">
     <a href="https://linkedin.com/in/tylerpdelano" class="cta-link" target="_blank">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
       LinkedIn
