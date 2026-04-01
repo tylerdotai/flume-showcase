@@ -24,10 +24,36 @@
     .hero-bg {
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 20% 50%, rgba(255,107,0,0.08) 0%, transparent 50%);
-      animation: pulse-bg 8s ease-in-out infinite;
+      overflow: hidden;
     }
-    @keyframes pulse-bg { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: -10%;
+      width: 50%;
+      height: 80%;
+      background: radial-gradient(ellipse, rgba(255,107,0,0.08) 0%, transparent 70%);
+      animation: float-bg-1 12s ease-in-out infinite;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 60%;
+      height: 80%;
+      background: radial-gradient(ellipse, rgba(77,159,255,0.06) 0%, transparent 70%);
+      animation: float-bg-2 15s ease-in-out infinite;
+    }
+    @keyframes float-bg-1 { 
+      0%, 100% { transform: translate(0, 0) scale(1); } 
+      50% { transform: translate(5%, 3%) scale(1.1); } 
+    }
+    @keyframes float-bg-2 { 
+      0%, 100% { transform: translate(0, 0) scale(1); } 
+      50% { transform: translate(-3%, -5%) scale(1.05); } 
+    }
     .hero-content { position: relative; z-index: 2; }
     .hero-tag {
       display: inline-flex;
@@ -89,20 +115,24 @@
       opacity: 0;
     }
     @keyframes fadeInRight { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+    .hero-pics {
+      display: flex;
+      gap: 24px;
+      align-items: flex-end;
+    }
     .hero-pics img {
-      width: 140px;
-      height: 180px;
+      width: 180px;
+      height: 230px;
       object-fit: cover;
       border: 2px solid var(--border);
       box-shadow: var(--shadow-lg);
       animation: float 6s ease-in-out infinite;
     }
-    .hero-pics img:first-child { border-color: var(--accent); }
+    .hero-pics img:first-child { 
+      border-color: var(--accent); 
+      animation-delay: 0s;
+    }
     .hero-pics img:last-child {
-      position: absolute;
-      top: 30px;
-      left: 40px;
-      z-index: 1;
       border-color: var(--accent-cool);
       animation-delay: 0.3s;
     }
