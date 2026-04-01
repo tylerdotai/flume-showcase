@@ -48,6 +48,44 @@
     .reveal-delay-3 { transition-delay: 0.3s; }
     .reveal-delay-4 { transition-delay: 0.4s; }
 
+    /* Cursor follower */
+    .cursor-follower {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: radial-gradient(circle, rgba(255,107,0,0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: width 0.3s, height 0.3s;
+    }
+    .cursor-follower.hover {
+      width: 40px;
+      height: 40px;
+    }
+
+    /* Scroll progress bar */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-cool));
+      width: 0;
+      z-index: 1000;
+      transition: width 0.1s;
+    }
+
+    /* Nav blur on scroll */
+    nav.scrolled {
+      backdrop-filter: blur(10px);
+      background: rgba(13, 13, 15, 0.85);
+    }
+    .nav-links a.active {
+      color: var(--accent) !important;
+    }
+
     /* Hover lift on cards */
     .hover-lift {
       transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
@@ -705,40 +743,139 @@
   </div>
 </footer>
 
-<script>
-  // Simple counter animation
-  const counters = document.querySelectorAll('.stat-number[data-target]');
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const target = parseInt(entry.target.dataset.target);
-        let current = 0;
-        const increment = target / 40;
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            entry.target.textContent = target;
-            clearInterval(timer);
-          } else {
-            entry.target.textContent = Math.floor(current);
-          }
-        }, 30);
-        counterObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
-  counters.forEach(counter => counterObserver.observe(counter));
+<!-- Cursor follower -->
+<div class="cursor-follower" id="cursor"></div>
 
-  // Scroll reveal animation
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<script>
+// ============ CURSOR FOLLOWER ============
+const cursor = document.getElementById('cursor');
+let mouseX = 0, mouseY = 0;
+let cursorX = 0, cursorY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+function animateCursor() {
+  cursorX += (mouseX - cursorX) * 0.15;
+  cursorY += (mouseY - cursorY) * 0.15;
+  cursor.style.left = cursorX + 'px';
+  cursor.style.top = cursorY + 'px';
+  requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('a, button, .hover-lift').forEach(el => {
+  el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+  el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+});
+
+// ============ SCROLL PROGRESS ============
+const scrollProgress = document.getElementById('scrollProgress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = (scrollTop / docHeight) * 100;
+  scrollProgress.style.width = scrollPercent + '%';
+});
+
+// ============ NAV BLUR ON SCROLL ============
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 100) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
+  }
+});
+
+// ============ ACTIVE NAV HIGHLIGHT ============
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+function highlightNav() {
+  const scrollPos = window.scrollY + 200;
+  sections.forEach(section => {
+    const top = section.offsetTop;
+    const height = section.offsetHeight;
+    const id = section.getAttribute('id');
+    if (scrollPos >= top && scrollPos < top + height) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === '#' + id) {
+          link.classList.add('active');
+        }
+      });
+    }
+  });
+}
+window.addEventListener('scroll', highlightNav);
+
+// ============ PARALLAX ON HERO PICS ============
+const heroPics = document.querySelectorAll('.hero-pic');
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  heroPics.forEach((pic, i) => {
+    const speed = 0.1 + (i * 0.05);
+    pic.style.transform = `translateY(${scrollY * speed}px)`;
+  });
+});
+
+// ============ COUNTER ANIMATION ============
+const counters = document.querySelectorAll('.stat-number[data-target]');
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.dataset.target);
+      let current = 0;
+      const increment = target / 50;
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          el.textContent = target;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current);
+        }
+      }, 30);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+counters.forEach(counter => counterObserver.observe(counter));
+
+// ============ SCROLL REVEAL ============
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ============ TILT ON PROJECT CARDS ============
+document.querySelectorAll('.project-card').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (y - centerY) / 20;
+    const rotateY = (centerX - x) / 20;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = '';
+  });
+});
 </script>
 
 </body>
