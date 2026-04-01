@@ -6,64 +6,20 @@
   <title>About — Tyler Delano</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/global.css">
   <style>
-    :root {
-      --bg-primary: #0d0d0f;
-      --bg-secondary: #141418;
-      --bg-card: #1a1a20;
-      --accent: #ff6b00;
-      --accent-cool: #3b9eff;
-      --accent-green: #22c55e;
-      --accent-purple: #a855f7;
-      --text-primary: #f5f5f5;
-      --text-secondary: #888;
-      --text-muted: #555;
-      --border: #2a2a30;
-      --font-display: 'Space Grotesk', sans-serif;
-      --font-editorial: 'Newsreader', serif;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: var(--font-display);
-      line-height: 1.6;
-    }
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      background: rgba(13, 13, 15, 0.95);
-      border-bottom: 1px solid var(--border);
-      padding: 0 48px;
-      height: 64px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    .nav-logo { font-size: 1rem; font-weight: 700; color: var(--text-primary); text-decoration: none; }
-    .nav-links { display: flex; gap: 40px; list-style: none; }
-    .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--accent); }
-
     .page-wrap {
       max-width: 800px;
       margin: 0 auto;
       padding: 140px 48px 80px;
     }
     .page-title {
-      font-size: 3rem;
-      font-weight: 700;
-      font-family: var(--font-editorial);
-      font-style: italic;
+      font-size: 3.5rem;
+      font-weight: 800;
       margin-bottom: 48px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.03em;
     }
-
     .section { margin-bottom: 56px; }
     .section h2 {
       font-size: 0.75rem;
@@ -71,7 +27,7 @@
       letter-spacing: 0.15em;
       color: var(--accent);
       margin-bottom: 16px;
-      font-weight: 600;
+      font-weight: 700;
     }
     .section p { color: var(--text-secondary); font-size: 1.05rem; line-height: 1.8; }
     .section p + p { margin-top: 16px; }
@@ -79,45 +35,46 @@
     .highlight {
       background: var(--bg-card);
       border: 1px solid var(--border);
-      border-left: 3px solid var(--accent-cool);
-      padding: 20px 24px;
+      border-left: 3px solid var(--accent);
+      padding: 24px 28px;
       margin: 32px 0;
-      font-size: 1rem;
       color: var(--text-secondary);
     }
 
     .facts-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2px;
-      background: var(--border);
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
       margin: 32px 0;
     }
-    .fact { background: var(--bg-card); padding: 20px; }
-    .fact .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 4px; }
-    .fact .value { font-size: 1.1rem; font-weight: 600; color: var(--text-primary); }
+    .fact { background: var(--bg-card); border: 1px solid var(--border); padding: 24px; transition: all var(--transition-med); }
+    .fact:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .fact .label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 8px; }
+    .fact .value { font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
 
     .projects-list { margin: 32px 0; }
     .project-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 16px 0;
+      padding: 20px 0;
       border-bottom: 1px solid var(--border);
+      transition: all var(--transition-fast);
     }
     .project-row:last-child { border-bottom: none; }
-    .project-row .name { font-weight: 600; color: var(--accent); }
+    .project-row:hover { padding-left: 12px; border-color: var(--accent); }
+    .project-row .name { font-weight: 700; color: var(--accent); font-size: 1rem; }
     .project-row .desc { color: var(--text-muted); font-size: 0.9rem; }
 
     footer { padding: 60px 48px; border-top: 1px solid var(--border); text-align: center; }
     footer p { color: var(--text-muted); font-size: 0.9rem; }
-    footer a { color: var(--accent-cool); text-decoration: none; }
-    footer a:hover { color: var(--accent); }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { color: var(--accent-cool); }
 
     @media (max-width: 768px) {
       nav { padding: 0 24px; }
       .page-wrap { padding: 100px 24px 60px; }
-      .facts-grid { grid-template-columns: 1fr; }
+      .facts-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
